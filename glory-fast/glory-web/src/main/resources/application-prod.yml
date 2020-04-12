@@ -1,33 +1,33 @@
 server:
   port: 8080
-  tomcat: 
+  tomcat:
     max-swallow-size: -1
   servlet:
-    context-path: /stock
+    context-path: /glory-fast
     compression:
       enabled: true
       mime-types: application/javascript,application/json,application/xml,text/html,text/xml,text/plain,text/css,image/*
 
 management:
- endpoints:
-  web:
-   exposure:
-    include: metrics,httptrace
-    
+  endpoints:
+    web:
+      exposure:
+        include: metrics,httptrace
+
 spring:
   servlet:
-     multipart: 
-        max-file-size: 10MB
-        max-request-size: 10MB
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
   mail:
     host: smtp.163.com
     username: jeecgos@163.com
     password: ??
     properties:
-      mail: 
-        smtp: 
+      mail:
+        smtp:
           auth: true
-          starttls: 
+          starttls:
             enable: true
             required: true
   ## quartz定时任务,采用数据库方式
@@ -95,16 +95,16 @@ spring:
         connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
       datasource:
         master:
-          url: jdbc:mysql://10.0.4.199:3306/stock?characterEncoding=UTF-8&useUnicode=true&useSSL=false
-          username: root
-          password: handinfo
+          url: jdbc:mysql://60.205.202.248:3306/glory-fast?characterEncoding=UTF-8&useUnicode=true&useSSL=false
+          username: glory
+          password: glory
           driver-class-name: com.mysql.jdbc.Driver
           # 多数据源配置
           #multi-datasource1:
-          #url: jdbc:mysql://localhost:3306/jeecg-boot2?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true
-          #username: root
-          #password: root
-          #driver-class-name: com.mysql.jdbc.Driver
+  #            url: jdbc:mysql://60.205.202.248:3306/glory-fast?characterEncoding=UTF-8&useUnicode=true&useSSL=false
+  #            username: glory
+  #            password: glory
+  #            driver-class-name: com.mysql.jdbc.Driver
   #redis 配置
   redis:
     database: 0
@@ -141,8 +141,8 @@ jeecg :
     webapp: /app/stock/webapp
   #短信秘钥
   sms:
-     accessKeyId: LTAIpW4gUG7xYDNI
-     accessKeySecret: ???
+    accessKeyId: LTAIpW4gUG7xYDNI
+    accessKeySecret: ???
 #cas单点登录
 cas:
   prefixUrl: http://cas.example.org:8443/cas
