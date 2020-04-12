@@ -1,0 +1,14 @@
+${AnsiColor.BRIGHT_BLUE}
+   _____   _                            _____    _       _
+  / ____| | |                          |  __ \  | |     (_)
+ | |  __  | |   ___    _ __   _   _    | |__) | | |__    _   _ __     ___
+ | | |_ | | |  / _ \  | '__| | | | |   |  _  /  | '_ \  | | | '_ \   / _ \
+ | |__| | | | | (_) | | |    | |_| |   | | \ \  | | | | | | | | | | |  __/
+  \_____| |_|  \___/  |_|     \__, |   |_|  \_\ |_| |_| |_| |_| |_|  \___|
+                               __/ |
+                              |___/
+
+${AnsiColor.BRIGHT_GREEN}
+Glory Fast Version: 1.0.0
+Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}
+${AnsiColor.BLACK}
