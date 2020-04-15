@@ -61,12 +61,20 @@ public class ResponseResult {
     // 响应中的数据
     private Object result;
 
+    public static ResponseResult fail(Integer status, String msg) {
+        return new ResponseResult(status, msg, null);
+    }
+
     public static ResponseResult build(Integer status, String msg, Object data) {
         return new ResponseResult(status, msg, data);
     }
 
     public static ResponseResult ok(Object data) {
         return new ResponseResult(data);
+    }
+
+    public static ResponseResult ok(String msg, Object data) {
+        return new ResponseResult(200, msg, data);
     }
 
 //    public static ResponseResult ok() {
