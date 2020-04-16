@@ -6,19 +6,19 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
+import top.glory.common.entity.DataEntity;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 用户表
- *
  * @author 春秋 2020-04-15
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class SysUser implements Serializable {
+public class SysUser extends DataEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -55,9 +55,6 @@ public class SysUser implements Serializable {
     /**
      * 生日
      */
-    /**
-     * 生日
-     */
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
@@ -87,11 +84,6 @@ public class SysUser implements Serializable {
      */
     private String status;
 
-    /**
-     * 删除状态(0-正常，1-已删除)
-     */
-    @TableLogic(value="0",delval="1")
-    private String delFlag;
 
     /**
      * 工号，唯一键
@@ -103,34 +95,6 @@ public class SysUser implements Serializable {
      */
     private String telephone;
 
-    /**
-     * 创建人
-     */
-    private String createBy;
-
-    /**
-     * 创建时间
-     */
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
-
-    /**
-     * 更新人
-     */
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
-
-    /**
-     * remarks
-     */
-    private String remarks;
 
     /**
      * 删除时间

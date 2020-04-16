@@ -3,6 +3,7 @@ package top.glory.common.system.query;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang3.StringUtils;
 import top.glory.common.utils.StringUtil;
 
 import java.beans.PropertyDescriptor;
@@ -314,6 +315,9 @@ public class QueryGenerator {
      * @param value        查询条件值
      */
     private static void addEasyQuery(QueryWrapper<?> queryWrapper, String name, QueryRuleEnum rule, Object value) {
+        if(StringUtils.equals("pageNo",name) || StringUtils.equals("pageSize",name)){
+            return;
+        }
         if (value == null || rule == null) {
             return;
         }

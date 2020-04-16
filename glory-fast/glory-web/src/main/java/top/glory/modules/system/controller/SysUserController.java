@@ -32,12 +32,11 @@ public class SysUserController {
      * 列表查询
      */
     @GetMapping(value = "/list")
-    public ResponseResult list(SysUser sysUser,
-                               @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-                               @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
-                               HttpServletRequest req) {
+    public ResponseResult list(@RequestBody SysUser sysUser,HttpServletRequest req) {
+        //组装查询条件
         QueryWrapper<SysUser> queryWrapper = QueryGenerator.initQueryWrapper(sysUser, req.getParameterMap());
-        IPage<SysUser> pageList = userService.page(new Page<SysUser>(pageNo, pageSize), queryWrapper);
+        //组装分页
+        IPage<SysUser> pageList = userService.page(new Page<SysUser>(sysUser.getPageNo(), sysUser.getPageSize()), queryWrapper);
         return ResponseResult.ok(pageList);
     }
 
@@ -74,11 +73,11 @@ public class SysUserController {
      * 删除用户
      */
     @DeleteMapping(value = "/delete")
-    public ResponseResult delete(@RequestBody List<SysUser> userList) {
-        if (userList.size() == 0) {
+    public ResponseResult delete(@RequestBody List<String> idList) {
+        if (idList.size() == 0) {
             ResponseResult.fail(500, "参数错误");
         } else {
-            List<String> idList = StringUtil.getIdList(userList);
+//            List<String> idList = StringUtil.getIdList(userList);
             boolean flag = userService.removeByIds(idList);
             if (flag) {
                 return ResponseResult.ok("删除成功，共" + idList.size() + "条");
