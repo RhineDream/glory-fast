@@ -46,13 +46,4 @@ public class StringUtil {
         }
         return sb.toString().toLowerCase();
     }
-
-    public static List<String> getIdList(List list){
-        List<String> idList = Lists.newArrayList();
-        for (Object o : list) {
-            SysUser sysUser = GsonUtils.beanCopy(o, SysUser.class);
-            idList.add(sysUser.getId());
-        }
-        return idList;
-    }
 }

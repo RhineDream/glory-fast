@@ -77,7 +77,6 @@ public class SysUserController {
         if (idList.size() == 0) {
             ResponseResult.fail(500, "参数错误");
         } else {
-//            List<String> idList = StringUtil.getIdList(userList);
             boolean flag = userService.removeByIds(idList);
             if (flag) {
                 return ResponseResult.ok("删除成功，共" + idList.size() + "条");
