@@ -1,4 +1,4 @@
-package top.glory.config;
+package top.glory.config.mybatis;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;

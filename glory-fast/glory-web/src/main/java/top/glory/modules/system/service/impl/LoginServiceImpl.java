@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import top.glory.modules.system.LoginService;
 import top.glory.modules.system.UserService;
 import top.glory.modules.system.entity.LoginUser;
+import top.glory.modules.system.entity.SysUser;
 import top.glory.modules.system.entity.User;
 
 import javax.annotation.Resource;
@@ -16,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public LoginUser doLogin(LoginUser loginUser) {
-        User user = userService.getUserByUsername(loginUser);
+        SysUser user = userService.getUserByUsername(loginUser);
         System.out.println(user);
         return loginUser;
     }

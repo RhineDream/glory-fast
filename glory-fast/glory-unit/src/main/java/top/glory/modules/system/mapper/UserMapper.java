@@ -14,6 +14,6 @@ import top.glory.modules.system.entity.User;
 @Mapper
 public interface UserMapper extends BaseMapper<SysUser> {
 
-    User getUserByUsername(LoginUser loginUser);
+    SysUser getUserByUsername(LoginUser loginUser);
 
 }

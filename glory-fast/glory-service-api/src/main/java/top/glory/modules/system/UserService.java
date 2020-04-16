@@ -5,6 +5,8 @@ import top.glory.modules.system.entity.LoginUser;
 import top.glory.modules.system.entity.SysUser;
 import top.glory.modules.system.entity.User;
 
+import java.util.Set;
+
 /**
  * @Description: 用户管理
  * @author 春秋
@@ -12,6 +14,9 @@ import top.glory.modules.system.entity.User;
  */
 public interface UserService extends IService<SysUser> {
 
-    User getUserByUsername(LoginUser loginUser);
+    SysUser getUserByUsername(LoginUser loginUser);
 
+    Set<String> getUserRolesSet(String username);
+
+    Set<String> getUserPermissionsSet(String username);
 }

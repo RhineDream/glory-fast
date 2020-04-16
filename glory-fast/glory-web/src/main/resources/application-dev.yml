@@ -142,3 +142,5 @@ glory :
     upload: D://upFiles
     #webapp文件路径
     webapp: D://webapp
+  shiro:
+    excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**

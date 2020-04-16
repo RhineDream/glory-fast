@@ -9,6 +9,7 @@ import top.glory.modules.system.entity.User;
 import top.glory.modules.system.mapper.UserMapper;
 
 import javax.annotation.Resource;
+import java.util.Set;
 
 /**
  * @Description: 用户管理
@@ -22,7 +23,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     private UserMapper userMapper;
 
     @Override
-    public User getUserByUsername(LoginUser loginUser) {
+    public SysUser getUserByUsername(LoginUser loginUser) {
         return userMapper.getUserByUsername(loginUser);
+    }
+
+    @Override
+    public Set<String> getUserRolesSet(String username) {
+        return null;
+    }
+
+    @Override
+    public Set<String> getUserPermissionsSet(String username) {
+        return null;
     }
 }

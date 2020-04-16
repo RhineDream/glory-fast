@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import top.glory.common.system.query.QueryGenerator;
+import top.glory.common.utils.PasswordUtil;
 import top.glory.common.utils.ResponseResult;
 import top.glory.common.utils.StringUtil;
 import top.glory.modules.system.UserService;
@@ -44,10 +45,16 @@ public class SysUserController {
      * 新增用户
      */
     @PostMapping(value = "/insert")
-    public ResponseResult insert(@RequestBody SysUser sysUser) {
-        boolean flag = userService.save(sysUser);
+    public ResponseResult insert(@RequestBody SysUser user) {
+        //密码加密
+        String salt = StringUtil.randomGen(8);
+        user.setSalt(salt);
+        String passwordEncode = PasswordUtil.encrypt(user.getUsername(), user.getPassword(), salt);
+        user.setPassword(passwordEncode);
+        user.setStatus("1");
+        boolean flag = userService.save(user);
         if (flag) {
-            return ResponseResult.ok("添加成功", sysUser.getId());
+            return ResponseResult.ok("添加成功", user.getId());
         }
         return ResponseResult.fail(500, "添加失败");
     }
