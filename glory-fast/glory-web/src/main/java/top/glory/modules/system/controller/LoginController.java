@@ -39,7 +39,7 @@ public class LoginController {
 
 
         //1. 校验用户是否有效
-        SysUser sysUser = userService.getUserByUsername(new LoginUser(username, null));
+        SysUser sysUser = userService.getUserByLoginName(new LoginUser(username, null));
 
         //校验用户有效性
 //        result = sysUserService.checkUserIsEffective(sysUser);
@@ -103,9 +103,9 @@ public class LoginController {
      */
     private ResponseResult userInfo(SysUser sysUser) {
         String syspassword = sysUser.getPassword();
-        String username = sysUser.getUsername();
+        String loginName = sysUser.getLoginName();
         // 生成token
-        String token = JwtUtil.sign(username, syspassword);
+        String token = JwtUtil.sign(loginName, syspassword);
         // 设置token缓存有效时间
         redisUtils.set(Constants.PREFIX_USER_TOKEN + token, token);
         redisUtils.expire(Constants.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME*2 / 1000);

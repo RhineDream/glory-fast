@@ -112,12 +112,12 @@ public class ShiroRealm extends AuthorizingRealm {
 
 		// 查询用户信息
 //		log.info("———校验token是否有效————checkUserTokenIsEffect——————— "+ token);
-		SysUser user = userService.getUserByUsername(new LoginUser(username, null));
+		SysUser user = userService.getUserByLoginName(new LoginUser(username, null));
 		if (user == null) {
 			throw new AuthenticationException("用户不存在!");
 		}
 		// 判断用户状态
-		if (StringUtils.equals("1",user.getStatus())) {
+		if (StringUtils.equals("2",user.getStatus())) {
 			throw new AuthenticationException("账号已被锁定,请联系管理员!");
 		}
 		// 校验token是否超时失效 & 或者账号密码是否错误

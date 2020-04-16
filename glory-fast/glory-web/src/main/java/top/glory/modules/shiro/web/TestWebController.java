@@ -32,7 +32,7 @@ public class TestWebController {
     @PostMapping("/login")
     public ResponseBean login(@RequestParam("username") String username,
                               @RequestParam("password") String password) {
-        SysUser user = userService.getUserByUsername(new LoginUser(username, null));
+        SysUser user = userService.getUserByLoginName(new LoginUser(username, null));
         if(user==null) {
     		return new ResponseBean(200, "用户不存在！", JwtUtil.sign(username, user.getPassword()));
     	}

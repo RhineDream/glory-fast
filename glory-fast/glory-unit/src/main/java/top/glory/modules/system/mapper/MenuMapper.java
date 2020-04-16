@@ -3,8 +3,8 @@ package top.glory.modules.system.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import top.glory.modules.system.entity.LoginUser;
+import top.glory.modules.system.entity.SysMenu;
 import top.glory.modules.system.entity.SysUser;
-import top.glory.modules.system.entity.User;
 
 /**
  * @Description: 用户管理
@@ -12,8 +12,6 @@ import top.glory.modules.system.entity.User;
  * @Date: 2020年4月15日
  */
 @Mapper
-public interface UserMapper extends BaseMapper<SysUser> {
-
-    SysUser getUserByLoginName(LoginUser loginUser);
+public interface MenuMapper extends BaseMapper<SysMenu> {
 
 }

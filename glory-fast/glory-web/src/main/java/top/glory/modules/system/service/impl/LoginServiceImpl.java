@@ -17,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public LoginUser doLogin(LoginUser loginUser) {
-        SysUser user = userService.getUserByUsername(loginUser);
+        SysUser user = userService.getUserByLoginName(loginUser);
         System.out.println(user);
         return loginUser;
     }
