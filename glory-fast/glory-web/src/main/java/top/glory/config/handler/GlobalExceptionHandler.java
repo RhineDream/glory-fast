@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import top.glory.common.utils.Constants;
+import top.glory.common.constant.Constants;
 import top.glory.common.utils.ResponseResult;
 
 import javax.servlet.http.HttpServletRequest;

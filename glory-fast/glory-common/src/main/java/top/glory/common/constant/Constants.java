@@ -1,4 +1,4 @@
-package top.glory.common.utils;
+package top.glory.common.constant;
 
 /**
  * 2015/6/25
@@ -40,5 +40,8 @@ public abstract class Constants {
      * 测试缓存key
      */
     public static final String TEST_DEMO_CACHE = "test:demo";
+
+    /**字典翻译文本后缀*/
+    public static final String DICT_TEXT_SUFFIX = "_dictText";
 
 }

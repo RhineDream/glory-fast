@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import top.glory.common.annotation.Dict;
 
 import java.util.Date;
 
@@ -20,6 +21,7 @@ public class DataEntity {
     /**
      * 创建人
      */
+    @Dict(dicCode = "id",dictTable="sys_user",dicText="username")
     private String createBy;
 
     /**

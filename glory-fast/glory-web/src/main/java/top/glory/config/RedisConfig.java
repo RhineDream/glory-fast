@@ -15,7 +15,7 @@ import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.*;
-import top.glory.common.utils.Constants;
+import top.glory.common.constant.Constants;
 
 import javax.annotation.Resource;
 import java.time.Duration;

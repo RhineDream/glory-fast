@@ -14,7 +14,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
-import top.glory.common.utils.Constants;
+import top.glory.common.constant.Constants;
 import top.glory.common.utils.JwtUtil;
 import top.glory.common.utils.RedisUtils;
 import top.glory.modules.shiro.authc.JwtToken;

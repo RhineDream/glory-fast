@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import top.glory.common.annotation.Dict;
 import top.glory.common.entity.DataEntity;
 
 import java.io.Serializable;
@@ -72,6 +73,7 @@ public class SysMenu extends DataEntity implements Serializable {
     /**
      * 权限策略1显示2禁用
      */
+    @Dict(dicCode = "yes_no")
     private String permsType;
 
     /**
