@@ -1,13 +1,13 @@
 package top.glory.modules.system;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import top.glory.modules.system.entity.SysPermission;
+import top.glory.modules.system.entity.SysRole;
 
 /**
- * @author 春秋
  * @Description: 用户管理
+ * @author 春秋
  * @Date: 2020年4月15日
  */
-public interface MenuService extends IService<SysPermission> {
+public interface RoleService extends IService<SysRole> {
 
 }

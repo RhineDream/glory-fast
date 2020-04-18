@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import top.glory.modules.system.entity.SysDict;
-import top.glory.modules.system.entity.SysMenu;
 
 /**
  * @Description: 用户管理

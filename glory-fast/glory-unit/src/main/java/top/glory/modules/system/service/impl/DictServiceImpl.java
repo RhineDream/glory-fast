@@ -5,11 +5,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import top.glory.common.constant.CacheConstant;
 import top.glory.modules.system.DictService;
-import top.glory.modules.system.MenuService;
 import top.glory.modules.system.entity.SysDict;
-import top.glory.modules.system.entity.SysMenu;
 import top.glory.modules.system.mapper.DictMapper;
-import top.glory.modules.system.mapper.MenuMapper;
 
 import javax.annotation.Resource;
 

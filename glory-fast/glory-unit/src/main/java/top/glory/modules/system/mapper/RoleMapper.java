@@ -2,7 +2,7 @@ package top.glory.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import top.glory.modules.system.entity.SysPermission;
+import top.glory.modules.system.entity.SysRole;
 
 /**
  * @Description: 用户管理
@@ -10,6 +10,6 @@ import top.glory.modules.system.entity.SysPermission;
  * @Date: 2020年4月15日
  */
 @Mapper
-public interface MenuMapper extends BaseMapper<SysPermission> {
+public interface RoleMapper extends BaseMapper<SysRole> {
 
 }
