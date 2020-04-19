@@ -36,7 +36,7 @@ public class SysUserController {
     /**
      * 列表查询
      */
-    @GetMapping(value = "/list")
+    @PostMapping(value = "/list")
     public ResponseResult list(@RequestBody SysUser sysUser,HttpServletRequest req) {
         //组装查询条件
         QueryWrapper<SysUser> queryWrapper = QueryGenerator.initQueryWrapper(sysUser, req.getParameterMap());
