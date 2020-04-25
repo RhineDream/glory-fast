@@ -77,46 +77,6 @@ class List extends PureComponent {
       title: '电话',
       dataIndex: 'phone',
     },
-
-    // {
-    //   title: '服务调用次数',
-    //   dataIndex: 'callNo',
-    //   sorter: true,
-    //   render: val => `${val} 万`,
-    //   // mark to display a total number
-    //   needTotal: true,
-    // },
-    // {
-    //   title: '状态',
-    //   dataIndex: 'status',
-    //   filters: [
-    //     {
-    //       text: status[0],
-    //       value: 0,
-    //     },
-    //     {
-    //       text: status[1],
-    //       value: 1,
-    //     },
-    //     {
-    //       text: status[2],
-    //       value: 2,
-    //     },
-    //     {
-    //       text: status[3],
-    //       value: 3,
-    //     },
-    //   ],
-    //   render(val) {
-    //     return <Badge status={statusMap[val]} text={status[val]} />;
-    //   },
-    // },
-    // {
-    //   title: '上次调度时间',
-    //   dataIndex: 'updatedAt',
-    //   sorter: true,
-    //   render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
-    // },
     {
       title: '操作',
       render: (text, record) => (
@@ -182,30 +142,6 @@ class List extends PureComponent {
     });
   };
 
-  handleMenuClick = e => {
-    const { dispatch } = this.props;
-    const { selectedRows } = this.state;
-
-    if (selectedRows.length === 0) return;
-    switch (e.key) {
-      case 'remove':
-        dispatch({
-          type: 'rule1/remove',
-          payload: {
-            key: selectedRows.map(row => row.key),
-          },
-          callback: () => {
-            this.setState({
-              selectedRows: [],
-            });
-          },
-        });
-        break;
-      default:
-        break;
-    }
-  };
-
   handleSelectRows = rows => {
     this.setState({
       selectedRows: rows,
@@ -230,7 +166,7 @@ class List extends PureComponent {
       });
 
       dispatch({
-        type: 'rule1/fetch',
+        type: 'admin/list',
         payload: values,
       });
     });
@@ -244,20 +180,22 @@ class List extends PureComponent {
       <Form onSubmit={this.handleSearch} layout="inline">
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
-            <FormItem label="规则名称">
-              {getFieldDecorator('name')(<Input placeholder="请输入" />)}
+            <FormItem label="用户名">
+              {getFieldDecorator('loginName')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status')(
-                <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
-                </Select>
-              )}
+            <FormItem label="姓名">
+              {getFieldDecorator('username')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
+          
+          <Col md={8} sm={24}>
+            <FormItem label="电子邮件">
+              {getFieldDecorator('email')(<Input placeholder="请输入" />)}
+            </FormItem>
+          </Col>
+          
           <Col md={8} sm={24}>
             <span className={styles.submitButtons}>
               <Button type="primary" htmlType="submit">
@@ -283,51 +221,33 @@ class List extends PureComponent {
     return (
       <Form onSubmit={this.handleSearch} layout="inline">
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-          <Col md={8} sm={24}>
-            <FormItem label="规则名称">
-              {getFieldDecorator('name')(<Input placeholder="请输入" />)}
+        <Col md={8} sm={24}>
+            <FormItem label="用户名">
+              {getFieldDecorator('loginName')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status')(
+            <FormItem label="姓名">
+              {getFieldDecorator('username')(<Input placeholder="请输入" />)}
+            </FormItem>
+          </Col>
+          
+          <Col md={8} sm={24}>
+            <FormItem label="电子邮件">
+              {getFieldDecorator('email')(<Input placeholder="请输入" />)}
+            </FormItem>
+          </Col>
+          <Col md={8} sm={24}>
+            <FormItem label="电话">
+              {getFieldDecorator('phone')(<Input placeholder="请输入" />)}
+            </FormItem>
+          </Col>
+          <Col md={8} sm={24}>
+            <FormItem label="性别">
+              {getFieldDecorator('sex')(
                 <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
-                </Select>
-              )}
-            </FormItem>
-          </Col>
-          <Col md={8} sm={24}>
-            <FormItem label="调用次数">
-              {getFieldDecorator('number')(<InputNumber style={{ width: '100%' }} />)}
-            </FormItem>
-          </Col>
-        </Row>
-        <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-          <Col md={8} sm={24}>
-            <FormItem label="更新日期">
-              {getFieldDecorator('date')(
-                <DatePicker style={{ width: '100%' }} placeholder="请输入更新日期" />
-              )}
-            </FormItem>
-          </Col>
-          <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status3')(
-                <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
-                </Select>
-              )}
-            </FormItem>
-          </Col>
-          <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status4')(
-                <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
+                  <Option value="1">男</Option>
+                  <Option value="2">女</Option>
                 </Select>
               )}
             </FormItem>
