@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.PageUtils;
@@ -66,6 +67,56 @@ public class SysUserController {
         PageInfo pageInfo = PageUtils.transPageData(pageList);
         return pageInfo;
     }
+
+
+    /**
+     * 新增/修改 用户
+     */
+    @PostMapping(value = "/save")
+    public ResponseResult save(@RequestBody SysUser user) {
+        boolean flag = false;
+        if(StringUtil.isEmpty(user.getId())){
+            //密码加密
+            String salt = StringUtil.randomGen(8);
+            user.setSalt(salt);
+            String passwordEncode = PasswordUtil.encrypt(user.getLoginName(), user.getPassword(), salt);
+            user.setPassword(passwordEncode);
+            user.setStatus("1");
+            flag = userService.save(user);
+        }else {
+            SysUser _user = userService.getById(user.getId());
+            if (_user == null) {
+                ResponseResult.fail(500, "id找不到");
+            } else {
+                flag = userService.updateById(user);
+            }
+        }
+        if (flag) {
+            return ResponseResult.ok("操作成功", user.getId());
+        }
+        return ResponseResult.fail(500, "操作失败");
+    }
+
+
+//    /**
+//     * 列表查询
+//     */
+//    @PostMapping(value = "/getById")
+//    public ResponseResult getById(@RequestBody(required = false) SysUser sysUser) {
+//        Assert.hasText(sysUser.getId(),"id不能为空");
+//        return ResponseResult.ok(userService.getById(sysUser.getId()));
+//    }
+
+    /**
+     * 列表查询
+     */
+    @PostMapping(value = "/edit")
+    public SysUser getById(@RequestBody(required = false) SysUser sysUser) {
+        Assert.hasText(sysUser.getId(),"id不能为空");
+        return userService.getById(sysUser.getId());
+    }
+
+
     /**
      * 新增用户
      */
