@@ -47,17 +47,24 @@ export default [
           },
         ],
       },
+      // 用户管理
+      {
+        path: '/admin',
+        icon: 'admin',
+        name: '用户管理',
+        component: './Admin/List',
+      },
       // list
       {
         path: '/user-manage',
         icon: 'table',
         name: '权限中心',
         routes: [
-          {
-            path: '/user-manage/list',
-            name: '用户管理',
-            component: './UserManage/UserList',
-          },
+          // {
+          //   path: '/user-manage/list',
+          //   name: '用户管理',
+          //   component: './UserManage/UserList',
+          // },
           {
             path: '/list/basic-list',
             name: '角色管理',
