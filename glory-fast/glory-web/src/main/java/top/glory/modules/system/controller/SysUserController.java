@@ -7,11 +7,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import top.glory.common.system.query.QueryGenerator;
+import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.PasswordUtil;
 import top.glory.common.utils.ResponseResult;
 import top.glory.common.utils.StringUtil;
 import top.glory.modules.system.UserService;
 import top.glory.modules.system.entity.SysUser;
+import top.glory.modules.system.vo.PageInfo;
 import top.glory.modules.system.vo.Role;
 import top.glory.modules.system.vo.UserInfo;
 
@@ -37,14 +39,33 @@ public class SysUserController {
      * 列表查询
      */
     @PostMapping(value = "/list")
-    public ResponseResult list(@RequestBody SysUser sysUser,HttpServletRequest req) {
+    public ResponseResult list(@RequestBody(required = false) SysUser sysUser,HttpServletRequest req) {
+        if(sysUser == null){
+            sysUser = new SysUser();
+        }
         //组装查询条件
         QueryWrapper<SysUser> queryWrapper = QueryGenerator.initQueryWrapper(sysUser, req.getParameterMap());
         //组装分页
         IPage<SysUser> pageList = userService.page(new Page<SysUser>(sysUser.getPageNo(), sysUser.getPageSize()), queryWrapper);
+        PageInfo pageInfo = PageUtils.transPageData(pageList);
         return ResponseResult.ok(pageList);
     }
 
+    /**
+     * 列表查询
+     */
+    @PostMapping(value = "/list2")
+    public PageInfo list2(@RequestBody(required = false) SysUser sysUser,HttpServletRequest req) {
+        if(sysUser == null){
+            sysUser = new SysUser();
+        }
+        //组装查询条件
+        QueryWrapper<SysUser> queryWrapper = QueryGenerator.initQueryWrapper(sysUser, req.getParameterMap());
+        //组装分页
+        IPage<SysUser> pageList = userService.page(new Page<SysUser>(sysUser.getPageNo(), sysUser.getPageSize()), queryWrapper);
+        PageInfo pageInfo = PageUtils.transPageData(pageList);
+        return pageInfo;
+    }
     /**
      * 新增用户
      */
