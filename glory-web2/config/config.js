@@ -79,8 +79,9 @@ export default {
     'primary-color': primaryColor,
   },
   proxy: {
-    '/api': {
-      target: 'http://47.104.190.138:9898/glory-fast/api',
+    '/glory-fast': {
+      // target: 'http://47.104.190.138:9898/',
+      target: 'http://192.168.1.101:9898/',
       changeOrigin: true,
       pathRewrite: { '^/api': '' },
     },
