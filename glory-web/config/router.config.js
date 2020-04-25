@@ -52,7 +52,21 @@ export default [
         path: '/admin',
         icon: 'admin',
         name: '用户管理',
-        component: './Admin/List',
+        routes: [
+          {
+            path: '/admin',
+            component: './Admin/List',
+          },
+          {
+            path: '/admin/add',
+            component: './Admin/Add',
+          },
+          {
+            path: '/admin/edit/:id',
+            component: './Admin/Add',
+          },
+        ]
+        
       },
       // list
       {
