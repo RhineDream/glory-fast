@@ -24,8 +24,8 @@ import {
 } from 'antd';
 import StandardTable from '@/components/StandardTable';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
-import { getUserList,getLogin } from '@/services/axios-api';
-import axios from 'axios'
+import { getUserList, getLogin } from '@/services/axios-api';
+import axios from 'axios';
 
 import styles from './UserList.less';
 
@@ -353,14 +353,15 @@ class TableList extends PureComponent {
   ];
 
   componentDidMount() {
-    console.log("===========>"+"测试调用自己的方法")
-    let params = {pageNo : 1,pageSize : 10}
-    let params2 = {username : 'admin',password : "123456"}
-    const res2 = getLogin(params2)
+    console.log('===========>' + '测试调用自己的方法');
+    let params = { pageNo: 1, pageSize: 10 };
+    let params2 = { username: 'admin', password: '123456' };
+    // const res2 = getLogin(params2)
     const res = getUserList(params);
-
-    console.log("===========>"+"测试调用自己的方法2"+"=========="+res2)
-    console.log("===========>"+"测试调用自己的方法"+"=========="+res)
+    let datasource = res.resule;
+    const { datasource } = this.props;
+    console.log('===========>' + '测试调用自己的方法2' + '==========' + res2);
+    console.log('===========>' + '测试调用自己的方法' + '==========' + res);
 
     // axios.post('http://47.104.190.138:9898/glory-fast/api/auth/login', params)
     // .then(function (response) {
@@ -369,9 +370,6 @@ class TableList extends PureComponent {
     // .catch(function (error) {
     //   console.log(error);
     // });
-
-
-
 
     const { dispatch } = this.props;
     dispatch({
