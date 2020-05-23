@@ -49,7 +49,7 @@ public class SysUserController {
         //组装分页
         IPage<SysUser> pageList = userService.page(new Page<SysUser>(sysUser.getPageNo(), sysUser.getPageSize()), queryWrapper);
         PageInfo pageInfo = PageUtils.transPageData(pageList);
-        return ResponseResult.ok(pageList);
+        return ResponseResult.ok(pageInfo);
     }
 
     /**

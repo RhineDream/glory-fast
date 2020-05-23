@@ -81,7 +81,7 @@ class List extends PureComponent {
       title: '操作',
       render: (text, record) => (
         <Fragment>
-          <a onClick={() => this.handleUpdateModalVisible(true, record)}>配置</a>
+          <Link to={`/admin/edit/${record.id}`}>修改</Link>
           <Divider type="vertical" />
           <a href="">订阅警报</a>
         </Fragment>
@@ -281,6 +281,7 @@ class List extends PureComponent {
       loading,
     } = this.props;
     const { selectedRows } = this.state;
+    
 
     return (
       <PageHeaderWrapper title="查询表格">
@@ -288,9 +289,11 @@ class List extends PureComponent {
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>{this.renderForm()}</div>
             <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                新建
-              </Button>
+              <Link to="/admin/add">
+                <Button icon="plus" type="primary">
+                  添加
+                </Button>
+              </Link>
             </div>
             <StandardTable
               selectedRows={selectedRows}
