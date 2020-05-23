@@ -47,7 +47,7 @@ public class SysUserController {
         //组装查询条件
         QueryWrapper<SysUser> queryWrapper = QueryGenerator.initQueryWrapper(sysUser, req.getParameterMap());
         //组装分页
-        IPage<SysUser> pageList = userService.page(new Page<SysUser>(sysUser.getPageNo(), sysUser.getPageSize()), queryWrapper);
+        IPage<SysUser> pageList = userService.getPage(new Page<SysUser>(sysUser.getPageNo(), sysUser.getPageSize()), queryWrapper);
         PageInfo pageInfo = PageUtils.transPageData(pageList);
         return ResponseResult.ok(pageInfo);
     }
@@ -122,6 +122,9 @@ public class SysUserController {
      */
     @PostMapping(value = "/insert")
     public ResponseResult insert(@RequestBody SysUser user) {
+        Assert.hasText(user.getLoginName(),"登录名不能为空！");
+        Assert.hasText(user.getUsername(),"用户名不能为空！");
+        Assert.hasText(user.getPassword(),"密码不能为空！");
         //密码加密
         String salt = StringUtil.randomGen(8);
         user.setSalt(salt);
