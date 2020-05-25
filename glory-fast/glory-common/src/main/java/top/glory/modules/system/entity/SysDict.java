@@ -6,29 +6,27 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import top.glory.common.entity.DataEntity;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * <p>
  * 字典表
- * </p>
- *
- * @Author zhangweijian
- * @since 2018-12-28
+ * @Author 春秋
+ * @since 2020年5月25日
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class SysDict implements Serializable {
+public class SysDict extends DataEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * id
      */
-    @TableId(type = IdType.ID_WORKER_STR)
+    @TableId(type = IdType.UUID)
     private String id;
 
     /**
@@ -53,32 +51,5 @@ public class SysDict implements Serializable {
      * 描述
      */
     private String description;
-
-    /**
-     * 删除状态
-     */
-    @TableLogic
-    private Integer delFlag;
-
-    /**
-     * 创建人
-     */
-    private String createBy;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新人
-     */
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
 
 }

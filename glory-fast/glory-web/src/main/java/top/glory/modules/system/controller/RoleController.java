@@ -6,9 +6,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import top.glory.common.system.query.QueryGenerator;
+import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.ResponseResult;
 import top.glory.modules.system.RoleService;
 import top.glory.modules.system.entity.SysRole;
+import top.glory.modules.system.vo.PageInfo;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +38,8 @@ public class RoleController {
         QueryWrapper<SysRole> queryWrapper = QueryGenerator.initQueryWrapper(role, req.getParameterMap());
         //组装分页
         IPage<SysRole> pageList = roleService.page(new Page<SysRole>(role.getPageNo(), role.getPageSize()), queryWrapper);
-        return ResponseResult.ok(pageList);
+        PageInfo pageInfo = PageUtils.transPageData(pageList);
+        return ResponseResult.ok(pageInfo);
     }
 
     /**
