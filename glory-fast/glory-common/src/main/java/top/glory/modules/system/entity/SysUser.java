@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
+import top.glory.common.annotation.Dict;
 import top.glory.common.entity.DataEntity;
 
 import java.io.Serializable;
@@ -62,6 +63,7 @@ public class SysUser extends DataEntity implements Serializable {
     /**
      * 性别(0-默认未知，1-男，2-女)
      */
+    @Dict(dicCode = "sex")
     private String sex;
 
     /**
@@ -82,6 +84,7 @@ public class SysUser extends DataEntity implements Serializable {
     /**
      * 用户状态(1-正常，2-禁用)
      */
+    @Dict(dicCode = "user_status")
     private String status;
 
 

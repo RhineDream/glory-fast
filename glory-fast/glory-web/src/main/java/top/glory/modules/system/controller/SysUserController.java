@@ -172,6 +172,24 @@ public class SysUserController {
     }
 
 
+    /**
+     * 修改用户
+     */
+    @PutMapping(value = "/disable")
+    public ResponseResult disable(@RequestBody SysUser sysUser) {
+        SysUser user = userService.getById(sysUser.getId());
+        if (user == null) {
+            ResponseResult.fail(500, "id找不到");
+        } else {
+            boolean flag = userService.updateById(sysUser);
+            if (flag) {
+                return ResponseResult.ok("操作成功", sysUser.getId());
+            }
+        }
+        return ResponseResult.fail(500, "操作失败");
+    }
+
+
     @RequestMapping("info")
     public ResponseResult Login(){
 

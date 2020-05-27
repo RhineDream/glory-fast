@@ -17,6 +17,7 @@ import top.glory.common.constant.Constants;
 import top.glory.common.utils.ResponseResult;
 import top.glory.common.utils.StringUtil;
 import top.glory.modules.system.DictService;
+import top.glory.modules.system.vo.PageInfo;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Field;
@@ -81,9 +82,9 @@ public class DictAspect {
      */
     private void parseDictText(Object result) {
         if (result instanceof ResponseResult) {
-            if (((ResponseResult) result).getResult() instanceof IPage) {
-                List<JSONObject> items = new ArrayList<>();
-                for (Object record : ((IPage) ((ResponseResult) result).getResult()).getRecords()) {
+            if (((ResponseResult) result).getResult() instanceof PageInfo) {
+                List<Object> items = new ArrayList<>();
+                for (Object record : ((PageInfo) ((ResponseResult) result).getResult()).getRecords()) {
                     ObjectMapper mapper = new ObjectMapper();
                     String json = "{}";
                     try {
@@ -118,7 +119,7 @@ public class DictAspect {
                     }
                     items.add(item);
                 }
-                ((IPage) ((ResponseResult) result).getResult()).setRecords(items);
+                ((PageInfo) ((ResponseResult) result).getResult()).setRecords(items);
             }
 
             //处理子表字典表
