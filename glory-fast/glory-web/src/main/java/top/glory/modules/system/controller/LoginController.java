@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.glory.common.constant.Constants;
 import top.glory.common.utils.*;
+import top.glory.modules.system.LoginLogService;
 import top.glory.modules.system.LoginService;
 import top.glory.modules.system.UserService;
 import top.glory.modules.system.entity.LoginUser;
+import top.glory.modules.system.entity.SysLoginLog;
 import top.glory.modules.system.entity.SysUser;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -26,12 +29,14 @@ public class LoginController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private LoginLogService loginLogService;
 
     @Autowired
     private RedisUtils redisUtils;
 
     @RequestMapping("login")
-    public ResponseResult Login(@RequestBody LoginUser loginUser){
+    public ResponseResult Login(@RequestBody LoginUser loginUser, HttpServletRequest request){
 
         String username = loginUser.getUsername();
         String password = loginUser.getPassword();
@@ -72,6 +77,7 @@ public class LoginController {
 //        map.put("roleId", "admin");
 //        map.put("token", "4291d7da9005377ec9aec4a71ea837f");
 
+        loginLogService.saveLoginLog(request,new SysLoginLog(sysUser.getLoginName(),sysUser.getUsername()));
         return res;
     }
 
