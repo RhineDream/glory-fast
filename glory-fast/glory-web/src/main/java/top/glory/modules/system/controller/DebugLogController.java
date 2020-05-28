@@ -35,6 +35,7 @@ public class DebugLogController {
     public ResponseResult list(@RequestBody SysDebugLog debugLog, HttpServletRequest req) {
         //组装查询条件
         QueryWrapper<SysDebugLog> queryWrapper = QueryGenerator.initQueryWrapper(debugLog, req.getParameterMap());
+        queryWrapper.orderByDesc("create_time");
         //组装分页
         IPage<SysDebugLog> pageList = debugLogService.page(new Page<SysDebugLog>(debugLog.getPageNo(), debugLog.getPageSize()), queryWrapper);
         PageInfo pageInfo = PageUtils.transPageData(pageList);

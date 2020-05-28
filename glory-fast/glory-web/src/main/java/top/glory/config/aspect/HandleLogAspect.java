@@ -86,9 +86,8 @@ public class HandleLogAspect {
         sysHandleLog.setPostType(methodType);
         sysHandleLog.setPostMethod(postMethod);
         sysHandleLog.setPostData(postData);
-        sysHandleLog.setPostData(postData);
         sysHandleLog.setUseTime(stopWatch.getTime() + "");
-        sysHandleLog.setReturnData(GsonUtils.objectToJsonStr(result));
+//        sysHandleLog.setReturnData(GsonUtils.objectToJsonStr(result));
         //设置日志文本信息
         sysHandleLog.setPostDesc(handleLog.value());
         handleLogService.save(sysHandleLog);

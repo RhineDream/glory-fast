@@ -33,6 +33,7 @@ public class LoginLogController {
     public ResponseResult list(@RequestBody SysLoginLog loginLog, HttpServletRequest req) {
         //组装查询条件
         QueryWrapper<SysLoginLog> queryWrapper = QueryGenerator.initQueryWrapper(loginLog, req.getParameterMap());
+        queryWrapper.orderByDesc("create_time");
         //组装分页
         IPage<SysLoginLog> pageList = loginLogService.page(new Page<SysLoginLog>(loginLog.getPageNo(), loginLog.getPageSize()), queryWrapper);
         PageInfo pageInfo = PageUtils.transPageData(pageList);

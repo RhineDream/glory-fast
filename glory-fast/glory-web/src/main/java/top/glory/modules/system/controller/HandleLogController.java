@@ -33,6 +33,7 @@ public class HandleLogController {
     public ResponseResult list(@RequestBody SysHandleLog handleLog, HttpServletRequest req) {
         //组装查询条件
         QueryWrapper<SysHandleLog> queryWrapper = QueryGenerator.initQueryWrapper(handleLog, req.getParameterMap());
+        queryWrapper.orderByDesc("create_time");
         //组装分页
         IPage<SysHandleLog> pageList = handleLogService.page(new Page<SysHandleLog>(handleLog.getPageNo(), handleLog.getPageSize()), queryWrapper);
         PageInfo pageInfo = PageUtils.transPageData(pageList);

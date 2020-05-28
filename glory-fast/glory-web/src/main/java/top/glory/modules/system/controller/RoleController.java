@@ -38,6 +38,7 @@ public class RoleController {
     public ResponseResult list(@RequestBody SysRole role, HttpServletRequest req) {
         //组装查询条件
         QueryWrapper<SysRole> queryWrapper = QueryGenerator.initQueryWrapper(role, req.getParameterMap());
+        queryWrapper.orderByDesc("create_time");
         //组装分页
         IPage<SysRole> pageList = roleService.page(new Page<SysRole>(role.getPageNo(), role.getPageSize()), queryWrapper);
         PageInfo pageInfo = PageUtils.transPageData(pageList);

@@ -48,6 +48,7 @@ public class SysUserController {
         }
         //组装查询条件
         QueryWrapper<SysUser> queryWrapper = QueryGenerator.initQueryWrapper(sysUser, req.getParameterMap());
+        queryWrapper.orderByDesc("create_time");
         //组装分页
         IPage<SysUser> pageList = userService.getPage(new Page<SysUser>(sysUser.getPageNo(), sysUser.getPageSize()), queryWrapper);
         PageInfo pageInfo = PageUtils.transPageData(pageList);
