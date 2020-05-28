@@ -68,7 +68,7 @@ public class ShiroConfig {
 			}
 		}
 		// 配置不会被拦截的链接 顺序判断
-		filterChainDefinitionMap.put("/api/**", "anon"); //登录验证码接口排除
+//		filterChainDefinitionMap.put("/api/**", "anon"); //登录验证码接口排除
 //		filterChainDefinitionMap.put("/api/user/insert", "anon"); //登录验证码接口排除
 		filterChainDefinitionMap.put("/api/auth/login", "anon"); //登录
 

@@ -6,8 +6,10 @@ import org.aspectj.lang.JoinPoint;
 import org.springframework.stereotype.Service;
 import top.glory.common.utils.DebugLogUtil;
 import top.glory.common.utils.StringUtil;
+import top.glory.common.utils.UserUtils;
 import top.glory.modules.system.DebugLogService;
 import top.glory.modules.system.entity.SysDebugLog;
+import top.glory.modules.system.entity.SysUser;
 import top.glory.modules.system.mapper.DebugLogMapper;
 
 /**
@@ -52,8 +54,10 @@ public class DebugLogServiceImpl extends ServiceImpl<DebugLogMapper, SysDebugLog
             } else {
                 debugLog.setIfException("2");
             }
-            debugLog.setLoginName("admin");
-            debugLog.setUsername("admin");
+            SysUser currentUser = UserUtils.getCurrentUser();
+
+            debugLog.setLoginName(currentUser.getLoginName());
+            debugLog.setUsername(currentUser.getUsername());
             debugLog.setPostMethod(methodName);
             debugLog.setClazzName(clazzName);
             debugLog.setErrorData(content.toString());

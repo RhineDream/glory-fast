@@ -14,8 +14,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import top.glory.common.annotation.HandleLog;
 import top.glory.common.utils.GsonUtils;
+import top.glory.common.utils.UserUtils;
 import top.glory.modules.system.HandleLogService;
 import top.glory.modules.system.entity.SysHandleLog;
+import top.glory.modules.system.entity.SysUser;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -76,8 +78,10 @@ public class HandleLogAspect {
 
         // 5.存库
         SysHandleLog sysHandleLog = new SysHandleLog();
-        sysHandleLog.setLoginName("admin");
-        sysHandleLog.setUsername("admin");
+        SysUser currentUser = UserUtils.getCurrentUser();
+
+        sysHandleLog.setLoginName(currentUser.getLoginName());
+        sysHandleLog.setUsername(currentUser.getUsername());
         sysHandleLog.setUrlPath(urlPath);
         sysHandleLog.setPostType(methodType);
         sysHandleLog.setPostMethod(postMethod);
