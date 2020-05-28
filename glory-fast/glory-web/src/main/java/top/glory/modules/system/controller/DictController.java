@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+import top.glory.common.annotation.HandleLog;
 import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.ResponseResult;
@@ -38,6 +39,7 @@ public class DictController {
     /**
      * 列表查询
      */
+    @HandleLog("查看字典列表")
     @RequestMapping(value = "/list")
     public ResponseResult list(@RequestBody SysDict dict, HttpServletRequest req) {
         //组装查询条件
@@ -52,6 +54,7 @@ public class DictController {
     /**
      * 新增用户
      */
+    @HandleLog("新增字典主表")
     @PostMapping(value = "/insert")
     public ResponseResult insert(@RequestBody SysDict dict) {
 
@@ -65,6 +68,7 @@ public class DictController {
     /**
      * 修改用户
      */
+    @HandleLog("修改字典主表")
     @PutMapping(value = "/update")
     public ResponseResult update(@RequestBody SysDict dict) {
         SysDict SysDict = dictService.getById(dict.getId());
@@ -82,6 +86,7 @@ public class DictController {
     /**
      * 删除用户
      */
+    @HandleLog("删除字典主表")
     @DeleteMapping(value = "/delete")
     public ResponseResult delete(@RequestBody List<String> idList) {
         if (idList.size() == 0) {
@@ -101,6 +106,7 @@ public class DictController {
     /**
      * 列表查询
      */
+    @HandleLog("查看字典子表列表")
     @RequestMapping(value = "/listItem")
     public ResponseResult listItem(@RequestBody SysDictItem dictItem, HttpServletRequest req) {
         Assert.hasText(dictItem.getDictId(),"字典主表id不能为空");
@@ -118,6 +124,7 @@ public class DictController {
     /**
      * 新增用户
      */
+    @HandleLog("新增字典子表")
     @PostMapping(value = "/insertItem")
     public ResponseResult insertItem(@RequestBody SysDictItem dictItem) {
         Assert.hasText(dictItem.getDictId(),"字典主表id不能为空");
@@ -131,6 +138,7 @@ public class DictController {
     /**
      * 修改用户
      */
+    @HandleLog("修改字典子表")
     @PutMapping(value = "/updateItem")
     public ResponseResult updateItem(@RequestBody SysDictItem dictItem) {
         Assert.hasText(dictItem.getDictId(),"字典主表id不能为空");
@@ -149,6 +157,7 @@ public class DictController {
     /**
      * 删除用户
      */
+    @HandleLog("删除字典子表")
     @DeleteMapping(value = "/deleteItem")
     public ResponseResult deleteItem(@RequestBody List<String> idList) {
         if (idList.size() == 0) {

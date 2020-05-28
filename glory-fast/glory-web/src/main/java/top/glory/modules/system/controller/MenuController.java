@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import top.glory.common.annotation.HandleLog;
 import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.ResponseResult;
 import top.glory.common.utils.StringUtil;
@@ -34,6 +35,7 @@ public class MenuController {
     /**
      * 列表查询
      */
+    @HandleLog("查看菜单列表")
     @GetMapping(value = "/list")
     public ResponseResult list() {
 
@@ -55,6 +57,7 @@ public class MenuController {
     /**
      * 新增用户
      */
+    @HandleLog("新增菜单")
     @PostMapping(value = "/insert")
     public ResponseResult insert(@RequestBody SysPermission menu) {
 
@@ -68,6 +71,7 @@ public class MenuController {
     /**
      * 修改用户
      */
+    @HandleLog("修改菜单")
     @PutMapping(value = "/update")
     public ResponseResult update(@RequestBody SysPermission menu) {
         SysPermission SysPermission = menuService.getById(menu.getId());
@@ -85,6 +89,7 @@ public class MenuController {
     /**
      * 删除用户
      */
+    @HandleLog("删除菜单")
     @DeleteMapping(value = "/delete")
     public ResponseResult delete(@RequestBody List<String> idList) {
         if (idList.size() == 0) {

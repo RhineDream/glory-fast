@@ -2,6 +2,8 @@ package top.glory.modules.system.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 import top.glory.common.entity.DataEntity;
 
@@ -13,6 +15,8 @@ import java.util.Date;
  * @author 春秋 2020-05-27
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
 public class SysLoginLog extends DataEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

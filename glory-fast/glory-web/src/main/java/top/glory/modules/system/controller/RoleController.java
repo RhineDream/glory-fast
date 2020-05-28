@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import top.glory.common.annotation.HandleLog;
 import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.ResponseResult;
@@ -32,6 +33,7 @@ public class RoleController {
     /**
      * 列表查询
      */
+    @HandleLog("查看角色列表")
     @RequestMapping(value = "/list")
     public ResponseResult list(@RequestBody SysRole role, HttpServletRequest req) {
         //组装查询条件
@@ -45,6 +47,7 @@ public class RoleController {
     /**
      * 新增用户
      */
+    @HandleLog("新增角色")
     @PostMapping(value = "/insert")
     public ResponseResult insert(@RequestBody SysRole role) {
 
@@ -58,6 +61,7 @@ public class RoleController {
     /**
      * 修改用户
      */
+    @HandleLog("修改角色")
     @PutMapping(value = "/update")
     public ResponseResult update(@RequestBody SysRole role) {
         SysRole sysRole = roleService.getById(role.getId());
@@ -75,6 +79,7 @@ public class RoleController {
     /**
      * 删除用户
      */
+    @HandleLog("删除角色")
     @DeleteMapping(value = "/delete")
     public ResponseResult delete(@RequestBody List<String> idList) {
         if (idList.size() == 0) {

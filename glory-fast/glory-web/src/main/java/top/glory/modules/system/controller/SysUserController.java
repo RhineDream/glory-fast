@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+import top.glory.common.annotation.HandleLog;
 import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.PasswordUtil;
@@ -39,6 +40,7 @@ public class SysUserController {
     /**
      * 列表查询
      */
+    @HandleLog("查看用户列表")
     @PostMapping(value = "/list")
     public ResponseResult list(@RequestBody(required = false) SysUser sysUser,HttpServletRequest req) {
         if(sysUser == null){
@@ -72,6 +74,7 @@ public class SysUserController {
     /**
      * 新增/修改 用户
      */
+    @HandleLog("新增用户")
     @PostMapping(value = "/save")
     public ResponseResult save(@RequestBody SysUser user) {
         boolean flag = false;
@@ -120,6 +123,7 @@ public class SysUserController {
     /**
      * 新增用户
      */
+    @HandleLog("新增用户")
     @PostMapping(value = "/insert")
     public ResponseResult insert(@RequestBody SysUser user) {
         Assert.hasText(user.getLoginName(),"登录名不能为空！");
@@ -141,6 +145,7 @@ public class SysUserController {
     /**
      * 修改用户
      */
+    @HandleLog("修改用户")
     @PutMapping(value = "/update")
     public ResponseResult update(@RequestBody SysUser sysUser) {
         SysUser user = userService.getById(sysUser.getId());
@@ -158,6 +163,7 @@ public class SysUserController {
     /**
      * 删除用户
      */
+    @HandleLog("删除用户")
     @DeleteMapping(value = "/delete")
     public ResponseResult delete(@RequestBody List<String> idList) {
         if (idList.size() == 0) {
@@ -175,6 +181,7 @@ public class SysUserController {
     /**
      * 修改用户
      */
+    @HandleLog("禁用/启用-用户")
     @PutMapping(value = "/disable")
     public ResponseResult disable(@RequestBody SysUser sysUser) {
         SysUser user = userService.getById(sysUser.getId());
