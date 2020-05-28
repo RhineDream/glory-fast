@@ -77,9 +77,9 @@ public class ResponseResult {
         return new ResponseResult(200, msg, data);
     }
 
-//    public static ResponseResult ok() {
-//        return new ResponseResult(null);
-//    }
+    public static ResponseResult ok() {
+        return new ResponseResult(null);
+    }
 
     public ResponseResult() {
 

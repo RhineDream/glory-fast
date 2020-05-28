@@ -13,5 +13,11 @@ import top.glory.modules.system.mapper.HandleLogMapper;
  */
 @Service
 public class HandleLogServiceImpl extends ServiceImpl<HandleLogMapper, SysHandleLog> implements HandleLogService {
-
+    @Override
+    public void test(String s) {
+        String[] split = s.split("");
+        String s1 = split[3];
+        int a = 1 / 0;
+        System.out.println(s);
+    }
 }

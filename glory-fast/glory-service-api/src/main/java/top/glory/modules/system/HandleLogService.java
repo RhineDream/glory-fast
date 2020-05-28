@@ -10,4 +10,5 @@ import top.glory.modules.system.entity.SysHandleLog;
  */
 public interface HandleLogService extends IService<SysHandleLog> {
 
+    void test(String s);
 }

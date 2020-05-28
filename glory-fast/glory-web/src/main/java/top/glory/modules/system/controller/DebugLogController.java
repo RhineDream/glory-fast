@@ -11,7 +11,9 @@ import top.glory.common.annotation.HandleLog;
 import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.ResponseResult;
+import top.glory.modules.system.DebugLogService;
 import top.glory.modules.system.HandleLogService;
+import top.glory.modules.system.entity.SysDebugLog;
 import top.glory.modules.system.entity.SysHandleLog;
 import top.glory.modules.system.vo.PageInfo;
 
@@ -19,31 +21,24 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
-@RequestMapping("/api/handleLog/")
+@RequestMapping("/api/debugLog/")
 @RestController
-public class HandleLogController {
+public class DebugLogController {
     @Resource
-    private HandleLogService handleLogService;
+    private DebugLogService debugLogService;
 
     /**
      * 列表查询
      */
-    @HandleLog("查看操作日志列表")
+    @HandleLog("查看调试日志列表")
     @RequestMapping(value = "/list")
-    public ResponseResult list(@RequestBody SysHandleLog handleLog, HttpServletRequest req) {
+    public ResponseResult list(@RequestBody SysDebugLog debugLog, HttpServletRequest req) {
         //组装查询条件
-        QueryWrapper<SysHandleLog> queryWrapper = QueryGenerator.initQueryWrapper(handleLog, req.getParameterMap());
+        QueryWrapper<SysDebugLog> queryWrapper = QueryGenerator.initQueryWrapper(debugLog, req.getParameterMap());
         //组装分页
-        IPage<SysHandleLog> pageList = handleLogService.page(new Page<SysHandleLog>(handleLog.getPageNo(), handleLog.getPageSize()), queryWrapper);
+        IPage<SysDebugLog> pageList = debugLogService.page(new Page<SysDebugLog>(debugLog.getPageNo(), debugLog.getPageSize()), queryWrapper);
         PageInfo pageInfo = PageUtils.transPageData(pageList);
         return ResponseResult.ok(pageInfo);
     }
-
-    @RequestMapping(value = "/testDebugLog")
-    public ResponseResult testDebugLog(@RequestBody SysHandleLog handleLog, HttpServletRequest req) {
-        handleLogService.test("1");
-        return ResponseResult.ok();
-    }
-
 
 }

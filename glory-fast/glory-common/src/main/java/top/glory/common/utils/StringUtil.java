@@ -3,6 +3,8 @@ package top.glory.common.utils;
 import com.google.common.collect.Lists;
 import top.glory.modules.system.entity.SysUser;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,5 +83,39 @@ public class StringUtil {
         Field[] fields = new Field[fieldList.size()];
         fieldList.toArray(fields);
         return fields;
+    }
+
+    // 获取异常信息
+    public static String getExceptionAllinfo(Exception ex) {
+        String sOut = "";
+        StringWriter sw = null;
+        PrintWriter pw = null;
+        try {
+            sw = new StringWriter();
+            pw = new PrintWriter(sw, true);
+            ex.printStackTrace(pw);
+            pw.flush();
+            sw.flush();
+            sOut = sw.toString();
+
+            pw.close();
+            sw.close();
+            sw = null;
+            pw = null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(pw!=null){
+                    pw.close();
+                }
+                if(sw!=null){
+                    sw.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return sOut;
     }
 }
