@@ -1,4 +1,4 @@
-package top.glory.modules.generate;
+package top.glory.modules.generate.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

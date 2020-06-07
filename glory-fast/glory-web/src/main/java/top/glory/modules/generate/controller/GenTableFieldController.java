@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import top.glory.common.annotation.HandleLog;
 import top.glory.common.utils.ResponseResult;
-import top.glory.modules.generate.GenTableField;
+import top.glory.modules.generate.entity.GenTableField;
 import top.glory.modules.generate.service.GenTableFieldService;
 
 import javax.annotation.Resource;
