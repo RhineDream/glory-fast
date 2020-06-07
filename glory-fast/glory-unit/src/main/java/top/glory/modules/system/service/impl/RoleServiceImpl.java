@@ -2,7 +2,7 @@ package top.glory.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import top.glory.modules.system.RoleService;
+import top.glory.modules.system.service.RoleService;
 import top.glory.modules.system.entity.SysRole;
 import top.glory.modules.system.mapper.RoleMapper;
 

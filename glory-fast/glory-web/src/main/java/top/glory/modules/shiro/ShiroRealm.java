@@ -18,7 +18,7 @@ import top.glory.common.constant.Constants;
 import top.glory.common.utils.JwtUtil;
 import top.glory.common.utils.RedisUtils;
 import top.glory.modules.shiro.authc.JwtToken;
-import top.glory.modules.system.UserService;
+import top.glory.modules.system.service.UserService;
 import top.glory.modules.system.entity.LoginUser;
 import top.glory.modules.system.entity.SysUser;
 

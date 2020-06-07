@@ -2,7 +2,7 @@ package top.glory.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import top.glory.modules.system.HandleLogService;
+import top.glory.modules.system.service.HandleLogService;
 import top.glory.modules.system.entity.SysHandleLog;
 import top.glory.modules.system.mapper.HandleLogMapper;
 

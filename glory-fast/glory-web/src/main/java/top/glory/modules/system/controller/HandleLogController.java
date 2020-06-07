@@ -11,7 +11,7 @@ import top.glory.common.annotation.HandleLog;
 import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.ResponseResult;
-import top.glory.modules.system.HandleLogService;
+import top.glory.modules.system.service.HandleLogService;
 import top.glory.modules.system.entity.SysHandleLog;
 import top.glory.modules.system.vo.PageInfo;
 

@@ -1,21 +1,16 @@
 package top.glory.modules.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import top.glory.common.annotation.HandleLog;
-import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.ResponseResult;
 import top.glory.common.utils.StringUtil;
-import top.glory.modules.system.MenuService;
+import top.glory.modules.system.service.MenuService;
 import top.glory.modules.system.entity.SysPermission;
 import top.glory.modules.system.vo.SysPermissionTree;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 

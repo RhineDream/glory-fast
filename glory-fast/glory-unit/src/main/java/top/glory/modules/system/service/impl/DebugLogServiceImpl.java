@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import top.glory.common.utils.DebugLogUtil;
 import top.glory.common.utils.StringUtil;
 import top.glory.common.utils.UserUtils;
-import top.glory.modules.system.DebugLogService;
+import top.glory.modules.system.service.DebugLogService;
 import top.glory.modules.system.entity.SysDebugLog;
 import top.glory.modules.system.entity.SysUser;
 import top.glory.modules.system.mapper.DebugLogMapper;

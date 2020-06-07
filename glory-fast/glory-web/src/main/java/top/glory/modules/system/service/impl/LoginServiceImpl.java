@@ -1,11 +1,10 @@
 package top.glory.modules.system.service.impl;
 
 import org.springframework.stereotype.Service;
-import top.glory.modules.system.LoginService;
-import top.glory.modules.system.UserService;
+import top.glory.modules.system.service.LoginService;
+import top.glory.modules.system.service.UserService;
 import top.glory.modules.system.entity.LoginUser;
 import top.glory.modules.system.entity.SysUser;
-import top.glory.modules.system.entity.User;
 
 import javax.annotation.Resource;
 

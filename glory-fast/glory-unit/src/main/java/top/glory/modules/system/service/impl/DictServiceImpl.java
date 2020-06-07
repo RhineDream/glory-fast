@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import top.glory.common.constant.CacheConstant;
-import top.glory.modules.system.DictService;
+import top.glory.modules.system.service.DictService;
 import top.glory.modules.system.entity.SysDict;
 import top.glory.modules.system.mapper.DictMapper;
 

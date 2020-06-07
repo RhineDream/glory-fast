@@ -1,18 +1,13 @@
 package top.glory.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 import top.glory.common.utils.IpAddrUtils;
 import top.glory.common.utils.ResponseResult;
-import top.glory.modules.system.IpService;
-import top.glory.modules.system.LoginLogService;
-import top.glory.modules.system.RoleService;
+import top.glory.modules.system.service.IpService;
+import top.glory.modules.system.service.LoginLogService;
 import top.glory.modules.system.entity.SysLoginLog;
-import top.glory.modules.system.entity.SysRole;
-import top.glory.modules.system.entity.SysUser;
 import top.glory.modules.system.mapper.LoginLogMapper;
-import top.glory.modules.system.mapper.RoleMapper;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

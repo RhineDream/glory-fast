@@ -1,17 +1,12 @@
 package top.glory.modules.generate.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import top.glory.common.annotation.HandleLog;
-import top.glory.common.system.query.QueryGenerator;
-import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.ResponseResult;
 import top.glory.modules.generate.GenTableField;
-import top.glory.modules.generate.GenTableFieldService;
-import top.glory.modules.system.vo.PageInfo;
+import top.glory.modules.generate.service.GenTableFieldService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

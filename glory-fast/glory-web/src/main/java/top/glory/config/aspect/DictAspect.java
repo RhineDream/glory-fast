@@ -1,7 +1,6 @@
 package top.glory.config.aspect;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +15,7 @@ import top.glory.common.annotation.Dict;
 import top.glory.common.constant.Constants;
 import top.glory.common.utils.ResponseResult;
 import top.glory.common.utils.StringUtil;
-import top.glory.modules.system.DictService;
+import top.glory.modules.system.service.DictService;
 import top.glory.modules.system.vo.PageInfo;
 
 import javax.annotation.Resource;

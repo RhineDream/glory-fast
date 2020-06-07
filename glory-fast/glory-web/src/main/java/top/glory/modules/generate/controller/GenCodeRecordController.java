@@ -10,7 +10,7 @@ import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.ResponseResult;
 import top.glory.modules.generate.GenCodeRecord;
-import top.glory.modules.generate.GenCodeRecordService;
+import top.glory.modules.generate.service.GenCodeRecordService;
 import top.glory.modules.system.vo.PageInfo;
 
 import javax.annotation.Resource;

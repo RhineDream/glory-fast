@@ -3,7 +3,7 @@ package top.glory.modules.generate.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import top.glory.modules.generate.GenCodeRecord;
-import top.glory.modules.generate.GenCodeRecordService;
+import top.glory.modules.generate.service.GenCodeRecordService;
 import top.glory.modules.generate.mapper.GenCodeRecordMapper;
 
 @Service

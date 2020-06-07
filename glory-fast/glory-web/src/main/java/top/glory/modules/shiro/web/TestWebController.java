@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import top.glory.common.utils.JwtUtil;
 import top.glory.common.utils.PasswordUtil;
 import top.glory.modules.shiro.vo.ResponseBean;
-import top.glory.modules.system.UserService;
+import top.glory.modules.system.service.UserService;
 import top.glory.modules.system.entity.LoginUser;
 import top.glory.modules.system.entity.SysUser;
-import top.glory.modules.system.entity.User;
 
 @RestController
 public class TestWebController {

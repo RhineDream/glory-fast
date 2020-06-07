@@ -9,7 +9,7 @@ import top.glory.common.annotation.HandleLog;
 import top.glory.common.system.query.QueryGenerator;
 import top.glory.common.utils.PageUtils;
 import top.glory.common.utils.ResponseResult;
-import top.glory.modules.system.RoleService;
+import top.glory.modules.system.service.RoleService;
 import top.glory.modules.system.entity.SysRole;
 import top.glory.modules.system.vo.PageInfo;
 

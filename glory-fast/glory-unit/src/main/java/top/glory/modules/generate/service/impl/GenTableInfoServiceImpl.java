@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import top.glory.modules.generate.GenTableInfo;
-import top.glory.modules.generate.GenTableInfoService;
+import top.glory.modules.generate.service.GenTableInfoService;
 import top.glory.modules.generate.mapper.GenTableInfoMapper;
 import top.glory.modules.system.entity.SysTable;
 

@@ -1,4 +1,4 @@
-package top.glory.modules.system;
+package top.glory.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.glory.modules.system.entity.SysHandleLog;

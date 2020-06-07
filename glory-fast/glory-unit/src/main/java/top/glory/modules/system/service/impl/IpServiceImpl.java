@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import top.glory.common.utils.IPSeekerUtil;
-import top.glory.modules.system.IpService;
+import top.glory.modules.system.service.IpService;
 
 import java.io.File;
 

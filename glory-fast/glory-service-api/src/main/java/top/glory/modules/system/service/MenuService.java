@@ -1,7 +1,6 @@
-package top.glory.modules.system;
+package top.glory.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import top.glory.modules.system.entity.SysDictItem;
 import top.glory.modules.system.entity.SysPermission;
 
 /**
@@ -9,6 +8,6 @@ import top.glory.modules.system.entity.SysPermission;
  * @Description: 用户管理
  * @Date: 2020年4月15日
  */
-public interface DictItemService extends IService<SysDictItem> {
+public interface MenuService extends IService<SysPermission> {
 
 }
