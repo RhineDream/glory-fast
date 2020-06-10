@@ -91,4 +91,15 @@ public class GenCodeRecordController {
     }
 
 
+    /**
+     * 新增用户
+     */
+    @HandleLog("生成代码")
+    @PostMapping(value = "/createCodeFile")
+    public ResponseResult createCodeFile(@RequestBody GenCodeRecord codeRecord) {
+        ResponseResult res = genCodeRecordService.createCodeFile(codeRecord);
+        return res;
+    }
+
+
 }

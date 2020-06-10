@@ -32,9 +32,7 @@ public class GenTableInfoController {
     @HandleLog("获取所有数据库表名")
     @RequestMapping(value = "/getTablePageList")
     public ResponseResult getTablePageList(@RequestBody SysTable table, HttpServletRequest req) {
-        if (table == null) {
-            table = new SysTable();
-        }
+
         //组装查询条件
         QueryWrapper<SysTable> queryWrapper = QueryGenerator.initQueryWrapper(table, req.getParameterMap());
         queryWrapper.orderByDesc("create_time");

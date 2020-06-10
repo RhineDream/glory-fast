@@ -7,6 +7,7 @@ import lombok.Data;
 import top.glory.common.entity.DataEntity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *  业务表字段

@@ -1,5 +1,9 @@
 package top.glory.common.constant;
 
+import com.google.common.collect.Sets;
+
+import java.util.Set;
+
 /**
  * 2015/6/25
  * <p/>
@@ -43,5 +47,13 @@ public abstract class Constants {
 
     /**字典翻译文本后缀*/
     public static final String DICT_TEXT_SUFFIX = "_text";
+
+    public static final String CODE_FILE_PATH = "D://gloryCode";
+
+    public static final Set<String> FIELD_EXCLUDE_LIST = Sets.newHashSet("id","create_by","create_time","update_by","update_time","remarks","del_flag");
+
+    /**单表代码生成用到的模板*/
+    public static final Set<String> GEN_CODE_ONE_TABLE_TEMP = Sets.newHashSet("entity.ftl","mapperXml.ftl","mapper.ftl","service.ftl","serviceImpl.ftl","controller.ftl");
+
 
 }

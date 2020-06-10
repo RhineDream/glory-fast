@@ -118,4 +118,24 @@ public class StringUtil {
         }
         return sOut;
     }
+
+    /**
+     * 首字母小写
+     * @param oldStr
+     * @return
+     */
+    public static String lowerFirst(String oldStr){
+
+        char[]chars = oldStr.toCharArray();
+
+        chars[0] += 32;
+
+        return String.valueOf(chars);
+
+    }
+
+    public static void main(String[] args) {
+        String face = lowerFirst("Face");
+        System.out.println(face);
+    }
 }
