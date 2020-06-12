@@ -14,9 +14,13 @@
         ORDER BY CREATE_TIME DESC
     </select>
 
+    <select id="getByTableName" parameterType="top.glory.modules.generate.entity.GenTableInfo" resultType="int">
+        SELECT count(1) FROM gen_table_info where table_name = #{tableName}
+    </select>
+
 
     <!--<select id="">
-        select TABLE_NAME,COLUMN_NAME,ORDINAL_POSITION,DATA_TYPE,DATA_TYPE,COLUMN_COMMENT from information_schema.COLUMNS where TABLE_SCHEMA = (select database()) and TABLE_NAME='sys_user'
+
     </select>-->
 
 

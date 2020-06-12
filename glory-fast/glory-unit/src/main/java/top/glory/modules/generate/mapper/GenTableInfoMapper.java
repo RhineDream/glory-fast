@@ -12,4 +12,6 @@ import java.util.List;
 public interface GenTableInfoMapper extends BaseMapper<GenTableInfo> {
 
     List<SysTable> getTablePageList(IPage<SysTable> page, SysTable table);
+
+    int getByTableName(GenTableInfo tableInfo);
 }
