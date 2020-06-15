@@ -51,9 +51,9 @@ public class GenCodeRecordServiceImpl extends ServiceImpl<GenCodeRecordMapper, G
         //字段信息
         List<GenTableField> fieldList = genTableFieldService.list(queryWrapper);
 
-        createCode(genCodeRecord,tableInfo,fieldList);
+        ResponseResult res = createCode(genCodeRecord,tableInfo,fieldList);
 
-        return ResponseResult.ok();
+        return res;
     }
 
     /**
@@ -62,13 +62,13 @@ public class GenCodeRecordServiceImpl extends ServiceImpl<GenCodeRecordMapper, G
      * @param tableInfo
      * @param fieldList
      */
-    private void createCode(GenCodeRecord genCodeRecord, GenTableInfo tableInfo, List<GenTableField> fieldList) {
+    private ResponseResult createCode(GenCodeRecord genCodeRecord, GenTableInfo tableInfo, List<GenTableField> fieldList) {
 
         //获取模板
         String s = dataToCodeFile(genCodeRecord, tableInfo, fieldList);
         System.out.println(s);
 
-        //
+        return ResponseResult.ok(s);
     }
 
     private String dataToCodeFile(GenCodeRecord genCodeRecord, GenTableInfo tableInfo, List<GenTableField> fieldList) {
@@ -100,7 +100,7 @@ public class GenCodeRecordServiceImpl extends ServiceImpl<GenCodeRecordMapper, G
         String moduleName = genCodeRecord.getModuleName();
 
         System.out.println("map" + map);
-
+        String msg = "";
         for (String temp : Constants.GEN_CODE_ONE_TABLE_TEMP) {
             String templ = "/oneTable/"+temp;
             String dirPath = Constants.CODE_FILE_PATH+"/"+packageName+"/"+moduleName;
@@ -136,10 +136,12 @@ public class GenCodeRecordServiceImpl extends ServiceImpl<GenCodeRecordMapper, G
             documentHandler.createDoc(map,dirPath,filePath,templ);
             log.info("代码生成路径 = {}",filePath);
 
+            msg = "代码已生成，路径==>【"+Constants.CODE_FILE_PATH+"/"+packageName+"/"+moduleName+"】";
+
         }
 
 
-        return "";
+        return msg;
     }
 
 }
