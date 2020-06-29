@@ -1,6 +1,7 @@
 package top.glory.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import top.glory.common.utils.ResponseResult;
 import top.glory.modules.system.entity.SysRole;
 
 /**
@@ -10,4 +11,5 @@ import top.glory.modules.system.entity.SysRole;
  */
 public interface RoleService extends IService<SysRole> {
 
+    ResponseResult checkRoleCode(SysRole role);
 }

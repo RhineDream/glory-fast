@@ -94,4 +94,14 @@ public class RoleController {
         return ResponseResult.fail(500, "删除失败");
     }
 
+
+    /**
+     * 校验编码重复
+     */
+    @PostMapping(value = "/checkRoleCode")
+    public ResponseResult checkRoleCode(@RequestBody SysRole role) {
+        ResponseResult res = roleService.checkRoleCode(role);
+        return res;
+    }
+
 }

@@ -12,4 +12,5 @@ import top.glory.modules.system.entity.SysRole;
 @Mapper
 public interface RoleMapper extends BaseMapper<SysRole> {
 
+    SysRole getRoleByCode(SysRole role);
 }

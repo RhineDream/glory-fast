@@ -5,14 +5,22 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.jeecgframework.poi.excel.ExcelImportUtil;
+import org.jeecgframework.poi.excel.def.NormalExcelConstants;
+
+import org.jeecgframework.poi.excel.entity.ExportParams;
+import org.jeecgframework.poi.excel.entity.ImportParams;
+import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 import top.glory.common.annotation.HandleLog;
 import top.glory.common.system.query.QueryGenerator;
-import top.glory.common.utils.PageUtils;
-import top.glory.common.utils.PasswordUtil;
-import top.glory.common.utils.ResponseResult;
-import top.glory.common.utils.StringUtil;
+import top.glory.common.utils.*;
+import top.glory.modules.system.entity.LoginUser;
 import top.glory.modules.system.service.UserService;
 import top.glory.modules.system.entity.SysUser;
 import top.glory.modules.system.vo.PageInfo;
@@ -21,7 +29,10 @@ import top.glory.modules.system.vo.UserInfo;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -195,6 +206,57 @@ public class SysUserController {
             }
         }
         return ResponseResult.fail(500, "操作失败");
+    }
+
+
+
+    @RequestMapping(value = "/export")
+    public ModelAndView exportXls(SysUser sysUser, HttpServletRequest request) {
+        // Step.1 组装查询条件
+        QueryWrapper<SysUser> queryWrapper = QueryGenerator.initQueryWrapper(sysUser, request.getParameterMap());
+        //Step.2 AutoPoi 导出Excel
+        ModelAndView mv = new ModelAndView(new JeecgEntityExcelView());
+        List<SysUser> list = userService.list(queryWrapper);
+        //导出文件名称
+        mv.addObject(NormalExcelConstants.FILE_NAME,"用户列表");
+        mv.addObject(NormalExcelConstants.CLASS,SysUser.class);
+        SysUser currentUser = UserUtils.getCurrentUser();
+        mv.addObject(NormalExcelConstants.PARAMS,new ExportParams("用户列表","导出人:"+currentUser.getUsername(),"导出信息"));
+        mv.addObject(NormalExcelConstants.DATA_LIST,list);
+        return mv;
+    }
+
+    /**
+     * 通过excel导入数据
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = "/import", method = RequestMethod.POST)
+    public ResponseResult importExcel(HttpServletRequest request, HttpServletResponse response) {
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+        for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
+            MultipartFile file = entity.getValue();// 获取上传文件对象
+            ImportParams params = new ImportParams();
+            params.setTitleRows(2);
+            params.setHeadRows(1);
+            params.setNeedSave(false);
+            try {
+                List<SysUser> listUser = ExcelImportUtil.importExcel(file.getInputStream(), SysUser.class, params);
+                return userService.importUser(listUser);
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+                return ResponseResult.fail(500,"文件导入失败:" + e.getMessage());
+            } finally {
+                try {
+                    file.getInputStream().close();
+                } catch (IOException e) {
+                    log.error(e.getMessage(), e);
+                }
+            }
+        }
+        return ResponseResult.fail(500,"文件导入失败！");
     }
 
 

@@ -6,7 +6,10 @@ import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
+import org.jeecgframework.poi.excel.entity.ImportParams;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import top.glory.common.utils.ResponseResult;
 import top.glory.modules.system.service.UserService;
 import top.glory.modules.system.entity.LoginUser;
 import top.glory.modules.system.entity.SysUser;
@@ -51,5 +54,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     @Override
     public Set<String> getUserPermissionsSet(String username) {
         return null;
+    }
+
+    @Override
+    public ResponseResult importUser(List<SysUser> listUser) {
+        boolean flag = super.saveBatch(listUser);
+        return ResponseResult.ok("导入成功");
     }
 }

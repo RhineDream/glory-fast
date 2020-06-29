@@ -1,7 +1,7 @@
 package top.glory.modules.shiro;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -10,7 +10,6 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -18,9 +17,9 @@ import top.glory.common.constant.Constants;
 import top.glory.common.utils.JwtUtil;
 import top.glory.common.utils.RedisUtils;
 import top.glory.modules.shiro.authc.JwtToken;
-import top.glory.modules.system.service.UserService;
 import top.glory.modules.system.entity.LoginUser;
 import top.glory.modules.system.entity.SysUser;
+import top.glory.modules.system.service.UserService;
 
 import java.util.Set;
 
