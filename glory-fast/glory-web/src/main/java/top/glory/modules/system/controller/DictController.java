@@ -109,7 +109,7 @@ public class DictController {
     @HandleLog("查看字典子表列表")
     @RequestMapping(value = "/listItem")
     public ResponseResult listItem(@RequestBody SysDictItem dictItem, HttpServletRequest req) {
-        Assert.hasText(dictItem.getDictId(),"字典主表id不能为空");
+        Assert.hasText(dictItem.getDictId(), "字典主表id不能为空");
         //组装查询条件
         QueryWrapper<SysDictItem> queryWrapper = QueryGenerator.initQueryWrapper(dictItem, req.getParameterMap());
 //        queryWrapper.eq("dict_id",dictItem.getDictId());    //根据主表id分页查询子表
@@ -127,7 +127,7 @@ public class DictController {
     @HandleLog("新增字典子表")
     @PostMapping(value = "/insertItem")
     public ResponseResult insertItem(@RequestBody SysDictItem dictItem) {
-        Assert.hasText(dictItem.getDictId(),"字典主表id不能为空");
+        Assert.hasText(dictItem.getDictId(), "字典主表id不能为空");
         boolean flag = dictItemService.save(dictItem);
         if (flag) {
             return ResponseResult.ok("添加成功", dictItem.getId());
@@ -141,7 +141,7 @@ public class DictController {
     @HandleLog("修改字典子表")
     @PutMapping(value = "/updateItem")
     public ResponseResult updateItem(@RequestBody SysDictItem dictItem) {
-        Assert.hasText(dictItem.getDictId(),"字典主表id不能为空");
+        Assert.hasText(dictItem.getDictId(), "字典主表id不能为空");
         SysDictItem item = dictItemService.getById(dictItem.getId());
         if (item == null) {
             ResponseResult.fail(500, "id找不到");
@@ -169,6 +169,21 @@ public class DictController {
             }
         }
         return ResponseResult.fail(500, "删除失败");
+    }
+
+
+    /**
+     * 字典查询
+     */
+    @HandleLog("查看字典列表")
+    @RequestMapping(value = "/dictItem")
+    public ResponseResult dictItem(@RequestBody SysDict dict, HttpServletRequest req) {
+
+        Assert.hasText(dict.getDictCode(), "字典项不能为空");
+        //组装分页
+        List<SysDictItem> list = dictItemService.getDictItemList(dict);
+
+        return ResponseResult.ok(list);
     }
 
 }

@@ -2,9 +2,14 @@ package top.glory.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import top.glory.modules.system.entity.SysDict;
 import top.glory.modules.system.service.DictItemService;
 import top.glory.modules.system.entity.SysDictItem;
 import top.glory.modules.system.mapper.DictItemMapper;
+import top.glory.modules.system.mapper.MenuMapper;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author 春秋
@@ -14,4 +19,8 @@ import top.glory.modules.system.mapper.DictItemMapper;
 @Service
 public class DictItemServiceImpl extends ServiceImpl<DictItemMapper, SysDictItem> implements DictItemService {
 
+    @Override
+    public List<SysDictItem> getDictItemList(SysDict dict) {
+        return this.baseMapper.getDictItemList(dict);
+    }
 }

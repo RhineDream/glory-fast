@@ -1,8 +1,11 @@
 package top.glory.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import top.glory.modules.system.entity.SysDict;
 import top.glory.modules.system.entity.SysDictItem;
 import top.glory.modules.system.entity.SysPermission;
+
+import java.util.List;
 
 /**
  * @author 春秋
@@ -11,4 +14,5 @@ import top.glory.modules.system.entity.SysPermission;
  */
 public interface DictItemService extends IService<SysDictItem> {
 
+    List<SysDictItem> getDictItemList(SysDict dict);
 }

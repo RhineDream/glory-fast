@@ -2,8 +2,11 @@ package top.glory.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import top.glory.modules.system.entity.SysDict;
 import top.glory.modules.system.entity.SysDictItem;
 import top.glory.modules.system.entity.SysPermission;
+
+import java.util.List;
 
 /**
  * @Description: 用户管理
@@ -13,4 +16,5 @@ import top.glory.modules.system.entity.SysPermission;
 @Mapper
 public interface DictItemMapper extends BaseMapper<SysDictItem> {
 
+    List<SysDictItem> getDictItemList(SysDict dict);
 }
