@@ -1,5 +1,6 @@
 package top.glory.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -114,5 +115,8 @@ public class SysUser extends DataEntity implements Serializable {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date deleteTime;
+
+    @TableField(exist = false)
+    private String[] roles;
 
 }
