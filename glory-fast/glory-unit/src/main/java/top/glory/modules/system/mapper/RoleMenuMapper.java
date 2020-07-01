@@ -2,10 +2,8 @@ package top.glory.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import top.glory.modules.system.entity.SysMenu;
-
-import java.util.List;
+import top.glory.modules.system.entity.SysRoleMenu;
 
 /**
  * @Description: 用户管理
@@ -13,7 +11,6 @@ import java.util.List;
  * @Date: 2020年4月15日
  */
 @Mapper
-public interface MenuMapper extends BaseMapper<SysMenu> {
+public interface RoleMenuMapper extends BaseMapper<SysRoleMenu> {
 
-    List<SysMenu> getUserMenuList(@Param("userId") String userId);
 }

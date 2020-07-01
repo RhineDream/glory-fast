@@ -2,17 +2,18 @@ package top.glory.modules.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import top.glory.common.annotation.HandleLog;
 import top.glory.common.utils.ResponseResult;
-import top.glory.common.utils.StringUtil;
+import top.glory.modules.system.entity.SysMenu;
+import top.glory.modules.system.entity.TreeSupportEntity;
 import top.glory.modules.system.service.MenuService;
-import top.glory.modules.system.entity.SysPermission;
-import top.glory.modules.system.vo.SysPermissionTree;
+import top.glory.modules.system.service.RoleMenuService;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * @author 春秋
@@ -28,25 +29,30 @@ public class MenuController {
     private MenuService menuService;
 
     /**
+     * 获取当前登录用户拥有的菜单权限
+     */
+    @GetMapping(value = "/getUserMenuList")
+    public ResponseResult getUserMenuList() {
+        List<SysMenu> list =  menuService.getUserMenuList();
+        return ResponseResult.ok(list);
+    }
+
+    /**
      * 列表查询
      */
     @HandleLog("查看菜单列表")
     @GetMapping(value = "/list")
     public ResponseResult list() {
+        LambdaQueryWrapper<SysMenu> query = new LambdaQueryWrapper<SysMenu>();
+        query.orderByAsc(SysMenu::getSortNo);
+        List<SysMenu> list = menuService.list(query);
+        List<SysMenu> servicePlaces = TreeSupportEntity.list2tree(list, SysMenu::setChildren,
+                (Predicate<SysMenu>) servicePlace ->
+                        // parentId为空或者为-1的菜单则认为是根菜单
+                        StringUtils.isEmpty(servicePlace.getParentId()) || servicePlace.getParentId().equals("-1")
+                                || servicePlace.getParentId().equals("0"));
 
-        LambdaQueryWrapper<SysPermission> query = new LambdaQueryWrapper<SysPermission>();
-//        query.eq(SysPermission::getDelFlag, CommonConstant.DEL_FLAG_0);
-        query.orderByAsc(SysPermission::getSortNo);
-        List<SysPermission> list = menuService.list(query);
-        List<SysPermissionTree> treeList = new ArrayList<>();
-        getTreeList(treeList, list, null);
-//
-//        //组装查询条件
-//        QueryWrapper<SysPermission> queryWrapper = QueryGenerator.initQueryWrapper(menu, req.getParameterMap());
-//
-//        //组装分页
-//        IPage<SysPermission> pageList = menuService.page(new Page<SysPermission>(menu.getPageNo(), menu.getPageSize()), queryWrapper);
-        return ResponseResult.ok(treeList);
+        return ResponseResult.ok(servicePlaces);
     }
 
     /**
@@ -54,7 +60,7 @@ public class MenuController {
      */
     @HandleLog("新增菜单")
     @PostMapping(value = "/insert")
-    public ResponseResult insert(@RequestBody SysPermission menu) {
+    public ResponseResult insert(@RequestBody SysMenu menu) {
 
         boolean flag = menuService.save(menu);
         if (flag) {
@@ -68,8 +74,8 @@ public class MenuController {
      */
     @HandleLog("修改菜单")
     @PutMapping(value = "/update")
-    public ResponseResult update(@RequestBody SysPermission menu) {
-        SysPermission SysPermission = menuService.getById(menu.getId());
+    public ResponseResult update(@RequestBody SysMenu menu) {
+        SysMenu SysPermission = menuService.getById(menu.getId());
         if (SysPermission == null) {
             ResponseResult.fail(500, "id找不到");
         } else {
@@ -98,24 +104,4 @@ public class MenuController {
         return ResponseResult.fail(500, "删除失败");
     }
 
-
-
-    private void getTreeList(List<SysPermissionTree> treeList, List<SysPermission> metaList, SysPermissionTree temp) {
-        for (SysPermission permission : metaList) {
-            String tempPid = permission.getParentId();
-            SysPermissionTree tree = new SysPermissionTree(permission);
-            if (temp == null && StringUtil.isEmpty(tempPid)) {
-                treeList.add(tree);
-                if (0 == tree.getIsLeaf()) {
-                    getTreeList(treeList, metaList, tree);
-                }
-            } else if (temp != null && tempPid != null && tempPid.equals(temp.getId())) {
-                temp.getChildren().add(tree);
-                if (0 == tree.getIsLeaf()) {
-                    getTreeList(treeList, metaList, tree);
-                }
-            }
-
-        }
-    }
 }

@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import top.glory.modules.system.entity.SysDict;
 import top.glory.modules.system.entity.SysDictItem;
-import top.glory.modules.system.entity.SysPermission;
 
 import java.util.List;
 

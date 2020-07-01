@@ -3,6 +3,7 @@ package top.glory.modules.system.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -11,6 +12,7 @@ import top.glory.common.entity.DataEntity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -23,7 +25,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class SysPermission extends DataEntity implements Serializable {
+public class SysMenu extends DataEntity implements Serializable, TreeSupportEntity  {
 
     private static final long serialVersionUID = 1L;
 
@@ -131,26 +133,10 @@ public class SysPermission extends DataEntity implements Serializable {
      */
     private Integer alwaysShow;
 
-    public SysPermission() {
+    @TableField(exist = false)
+    private List<SysMenu> children = Lists.newArrayList();
 
-    }
-
-    public SysPermission(boolean index) {
-        if (index) {
-            this.id = "9502685863ab87f0ad1134142788a385";
-            this.name = "首页";
-            this.component = "dashboard/Analysis";
-            this.url = "/dashboard/analysis";
-            this.icon = "home";
-            this.menuType = 0;
-            this.sortNo = 0;
-            this.ruleFlag = 0;
-            this.alwaysShow = 1;
-            this.isRoute = 0;
-            this.keepAlive = 1;
-            this.isLeaf = 1;
-            this.hidden = 0;
-        }
+    public SysMenu() {
 
     }
 }

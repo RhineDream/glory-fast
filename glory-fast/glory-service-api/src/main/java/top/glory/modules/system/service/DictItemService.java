@@ -3,7 +3,6 @@ package top.glory.modules.system.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.glory.modules.system.entity.SysDict;
 import top.glory.modules.system.entity.SysDictItem;
-import top.glory.modules.system.entity.SysPermission;
 
 import java.util.List;
 
