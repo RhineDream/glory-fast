@@ -12,4 +12,6 @@ import top.glory.modules.system.entity.SysRole;
 public interface RoleService extends IService<SysRole> {
 
     ResponseResult checkRoleCode(SysRole role);
+
+    ResponseResult grant(SysRole role);
 }

@@ -12,4 +12,8 @@
         );
     </select>
 
+    <select id="getMenuListByRole" parameterType="string" resultType="string">
+        SELECT menu_id FROM sys_role_menu WHERE role_id = #{roleId}
+    </select>
+
 </mapper>

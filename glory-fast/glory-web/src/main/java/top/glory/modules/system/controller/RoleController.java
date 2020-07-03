@@ -104,4 +104,14 @@ public class RoleController {
         return res;
     }
 
+    /**
+     * 新增用户
+     */
+    @HandleLog("角色授权")
+    @PostMapping(value = "/grant")
+    public ResponseResult grant(@RequestBody SysRole role) {
+        ResponseResult res = roleService.grant(role);
+        return res;
+    }
+
 }

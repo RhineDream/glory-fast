@@ -11,4 +11,5 @@ import top.glory.modules.system.entity.SysRoleMenu;
  */
 public interface RoleMenuService extends IService<SysRoleMenu> {
 
+    int deleteByRoleId(String id);
 }

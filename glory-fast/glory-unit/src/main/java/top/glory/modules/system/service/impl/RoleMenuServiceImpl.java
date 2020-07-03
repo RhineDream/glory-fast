@@ -19,5 +19,8 @@ import javax.annotation.Resource;
  */
 @Service
 public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, SysRoleMenu> implements RoleMenuService {
-
+    @Override
+    public int deleteByRoleId(String roleId) {
+        return this.baseMapper.deleteByRoleId(roleId);
+    }
 }

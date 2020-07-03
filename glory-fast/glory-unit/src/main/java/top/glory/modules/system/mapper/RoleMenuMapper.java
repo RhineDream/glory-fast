@@ -2,6 +2,7 @@ package top.glory.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import top.glory.modules.system.entity.SysMenu;
 import top.glory.modules.system.entity.SysRoleMenu;
 
@@ -13,4 +14,5 @@ import top.glory.modules.system.entity.SysRoleMenu;
 @Mapper
 public interface RoleMenuMapper extends BaseMapper<SysRoleMenu> {
 
+    int deleteByRoleId(@Param("roleId") String roleId);
 }

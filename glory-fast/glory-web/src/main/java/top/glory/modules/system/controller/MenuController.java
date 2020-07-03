@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import top.glory.common.annotation.HandleLog;
 import top.glory.common.utils.ResponseResult;
 import top.glory.modules.system.entity.SysMenu;
+import top.glory.modules.system.entity.SysRole;
 import top.glory.modules.system.entity.TreeSupportEntity;
 import top.glory.modules.system.service.MenuService;
 import top.glory.modules.system.service.RoleMenuService;
@@ -34,6 +35,15 @@ public class MenuController {
     @GetMapping(value = "/getUserMenuList")
     public ResponseResult getUserMenuList() {
         List<SysMenu> list =  menuService.getUserMenuList();
+        return ResponseResult.ok(list);
+    }
+
+    /**
+     * 授权需要展示列表
+     */
+    @GetMapping(value = "/getMenuListByRole")
+    public ResponseResult getMenuListByRole(String roleId) {
+        List<String> list =  menuService.getMenuListByRole(roleId);
         return ResponseResult.ok(list);
     }
 

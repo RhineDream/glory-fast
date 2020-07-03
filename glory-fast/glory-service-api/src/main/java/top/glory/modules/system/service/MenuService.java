@@ -2,6 +2,7 @@ package top.glory.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.glory.modules.system.entity.SysMenu;
+import top.glory.modules.system.entity.SysRole;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ import java.util.List;
 public interface MenuService extends IService<SysMenu> {
 
     List<SysMenu> getUserMenuList();
+
+    List<String> getMenuListByRole(String roleId);
 }

@@ -1,11 +1,14 @@
 package top.glory.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import top.glory.common.entity.DataEntity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *  角色表
@@ -37,5 +40,9 @@ public class SysRole extends DataEntity implements Serializable {
      * 描述
      */
     private String description;
+
+    @TableField(exist = false)
+    private List<String> menus = Lists.newArrayList();
+
 
 }

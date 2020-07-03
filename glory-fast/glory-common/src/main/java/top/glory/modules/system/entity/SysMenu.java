@@ -136,7 +136,9 @@ public class SysMenu extends DataEntity implements Serializable, TreeSupportEnti
     @TableField(exist = false)
     private List<SysMenu> children = Lists.newArrayList();
 
-    public SysMenu() {
-
-    }
+    /**
+     * 按钮权限状态(0无效1有效)
+     */
+    @TableField(exist = false)
+    private String ifCheck;
 }

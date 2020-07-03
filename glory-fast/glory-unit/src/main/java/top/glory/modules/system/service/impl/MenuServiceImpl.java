@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import top.glory.common.utils.StringUtil;
 import top.glory.common.utils.UserUtils;
+import top.glory.modules.system.entity.SysRole;
 import top.glory.modules.system.entity.SysUser;
 import top.glory.modules.system.entity.TreeSupportEntity;
 import top.glory.modules.system.service.MenuService;
@@ -53,5 +54,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
         return super.updateById(menu);
     }
 
-
+    @Override
+    public List<String> getMenuListByRole(String roleId) {
+        return this.baseMapper.getMenuListByRole(roleId);
+    }
 }
