@@ -13,7 +13,7 @@
     </select>
 
     <select id="getMenuListByRole" parameterType="string" resultType="string">
-        SELECT menu_id FROM sys_role_menu WHERE role_id = #{roleId}
+        SELECT menu_id FROM sys_role_menu WHERE role_id = #{roleId} and del_flag = 0
     </select>
 
 </mapper>

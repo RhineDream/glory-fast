@@ -10,6 +10,7 @@ import top.glory.modules.system.service.RoleMenuService;
 import top.glory.modules.system.service.RoleService;
 import top.glory.modules.system.entity.SysRole;
 import top.glory.modules.system.mapper.RoleMapper;
+import top.glory.modules.system.vo.SysRoleVo;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,7 +38,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, SysRole> implements
     }
 
     @Override
-    public ResponseResult grant(SysRole role) {
+    public ResponseResult grant(SysRoleVo role) {
 
         //删除之前的权限
         roleMenuService.deleteByRoleId(role.getId());

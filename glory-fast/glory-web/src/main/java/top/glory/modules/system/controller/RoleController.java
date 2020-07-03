@@ -12,6 +12,7 @@ import top.glory.common.utils.ResponseResult;
 import top.glory.modules.system.service.RoleService;
 import top.glory.modules.system.entity.SysRole;
 import top.glory.modules.system.vo.PageInfo;
+import top.glory.modules.system.vo.SysRoleVo;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -105,11 +106,11 @@ public class RoleController {
     }
 
     /**
-     * 新增用户
+     * 角色授权
      */
     @HandleLog("角色授权")
     @PostMapping(value = "/grant")
-    public ResponseResult grant(@RequestBody SysRole role) {
+    public ResponseResult grant(@RequestBody SysRoleVo role) {
         ResponseResult res = roleService.grant(role);
         return res;
     }

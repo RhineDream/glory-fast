@@ -1,6 +1,7 @@
 package top.glory.modules.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,9 +41,6 @@ public class SysRole extends DataEntity implements Serializable {
      * 描述
      */
     private String description;
-
-    @TableField(exist = false)
-    private List<String> menus = Lists.newArrayList();
 
 
 }
