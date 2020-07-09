@@ -164,6 +164,12 @@ public class SysUserController {
         if (user == null) {
             ResponseResult.fail(500, "id找不到");
         } else {
+            //密码加密
+            String salt = StringUtil.randomGen(8);
+            sysUser.setSalt(salt);
+            String passwordEncode = PasswordUtil.encrypt(user.getLoginName(), user.getPassword(), salt);
+            sysUser.setPassword(passwordEncode);
+            sysUser.setStatus("1");
             boolean flag = userService.updateById(sysUser);
             if (flag) {
                 return ResponseResult.ok("修改成功", sysUser.getId());
