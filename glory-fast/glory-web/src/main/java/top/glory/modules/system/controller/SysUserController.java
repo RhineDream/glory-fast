@@ -167,7 +167,7 @@ public class SysUserController {
             //密码加密
             String salt = StringUtil.randomGen(8);
             sysUser.setSalt(salt);
-            String passwordEncode = PasswordUtil.encrypt(user.getLoginName(), user.getPassword(), salt);
+            String passwordEncode = PasswordUtil.encrypt(sysUser.getLoginName(), sysUser.getPassword(), salt);
             sysUser.setPassword(passwordEncode);
             sysUser.setStatus("1");
             boolean flag = userService.updateById(sysUser);
