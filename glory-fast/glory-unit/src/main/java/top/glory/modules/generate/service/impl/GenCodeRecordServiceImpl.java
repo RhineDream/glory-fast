@@ -132,6 +132,27 @@ public class GenCodeRecordServiceImpl extends ServiceImpl<GenCodeRecordMapper, G
                 filePath = dirPath + "/"+tableInfo.getClazzName()+"Controller.java";
             }
 
+            if(temp.contains("reactService.ftl")){    //reactService.ftl
+                dirPath = dirPath +"/react/api";
+                filePath = dirPath + "/"+tableInfo.getClazzName()+"Service.js";
+            }
+            if(temp.contains("reactModels.ftl")){    //reactModels.ftl
+                dirPath = dirPath +"/react/service";
+                filePath = dirPath + "/"+lowerClazzName+"Models.js";
+            }
+            if(temp.contains("reactList.ftl")){    //reactList.ftl
+                dirPath = dirPath +"/react/list";
+                filePath = dirPath + "/"+tableInfo.getClazzName()+"List.js";
+            }
+            if(temp.contains("reactListStyle.ftl")){    //reactListStyle.ftl
+                dirPath = dirPath +"/react/list";
+                filePath = dirPath + "/"+tableInfo.getClazzName()+"List.less";
+            }
+            if(temp.contains("reactModal.ftl")){    //reactModal.ftl
+                dirPath = dirPath +"/react/list";
+                filePath = dirPath + "/"+tableInfo.getClazzName()+"Modal.js";
+            }
+
             //生成代码
             documentHandler.createDoc(map,dirPath,filePath,templ);
             log.info("代码生成路径 = {}",filePath);

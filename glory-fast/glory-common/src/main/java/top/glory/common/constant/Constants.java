@@ -53,7 +53,8 @@ public abstract class Constants {
     public static final Set<String> FIELD_EXCLUDE_LIST = Sets.newHashSet("id","create_by","create_time","update_by","update_time","remarks","del_flag");
 
     /**单表代码生成用到的模板*/
-    public static final Set<String> GEN_CODE_ONE_TABLE_TEMP = Sets.newHashSet("entity.ftl","mapperXml.ftl","mapper.ftl","service.ftl","serviceImpl.ftl","controller.ftl");
+    public static final Set<String> GEN_CODE_ONE_TABLE_TEMP = Sets.newHashSet("entity.ftl","mapperXml.ftl","mapper.ftl","service.ftl","serviceImpl.ftl","controller.ftl",
+            "reactService.ftl","reactModels.ftl","reactList.ftl","reactListStyle.ftl","reactModal.ftl");
 
 
 }

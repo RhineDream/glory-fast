@@ -92,7 +92,7 @@ public class GenCodeRecordController {
 
 
     /**
-     * 新增用户
+     * 生成代码
      */
     @HandleLog("生成代码")
     @PostMapping(value = "/createCodeFile")
