@@ -23,7 +23,7 @@ import java.util.List;
  * @Date: ${(currDate)!""}
  */
 @Slf4j
-@RequestMapping("/api/${(tableInfo.clazzName)!""}/")
+@RequestMapping("/api/${(lowerClazzName)!""}/")
 @RestController
 public class ${(tableInfo.clazzName)!""}Controller {
 

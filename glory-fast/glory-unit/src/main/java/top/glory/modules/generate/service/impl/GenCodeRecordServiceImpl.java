@@ -138,7 +138,7 @@ public class GenCodeRecordServiceImpl extends ServiceImpl<GenCodeRecordMapper, G
             }
             if(temp.contains("reactModels.ftl")){    //reactModels.ftl
                 dirPath = dirPath +"/react/service";
-                filePath = dirPath + "/"+lowerClazzName+"Models.js";
+                filePath = dirPath + "/"+lowerClazzName+"models.js";
             }
             if(temp.contains("reactList.ftl")){    //reactList.ftl
                 dirPath = dirPath +"/react/list";

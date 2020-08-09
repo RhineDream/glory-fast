@@ -1,7 +1,7 @@
 import request from '@/utils/request';
 import { func } from 'prop-types';
 
-/*列表查询*/
+/*${(genCodeRecord.moduleDesc)!""}-列表查询*/
 export async function query${(tableInfo.clazzName)!""}List(data) {
   return request('/api/${(lowerClazzName)!""}/list', {
     method: 'POST',
@@ -9,7 +9,7 @@ export async function query${(tableInfo.clazzName)!""}List(data) {
   });
 }
 
-/*新增*/
+/*${(genCodeRecord.moduleDesc)!""}-新增*/
 export async function add${(tableInfo.clazzName)!""}(data) {
   return request('/api/${(lowerClazzName)!""}/insert', {
     method: 'POST',
@@ -17,7 +17,7 @@ export async function add${(tableInfo.clazzName)!""}(data) {
   });
 }
 
-/*修改*/
+/*${(genCodeRecord.moduleDesc)!""}-修改*/
 export async function edit${(tableInfo.clazzName)!""}(data) {
     return request('/api/${(lowerClazzName)!""}/update', {
       method: 'PUT',
@@ -25,7 +25,7 @@ export async function edit${(tableInfo.clazzName)!""}(data) {
     });
   }
 
-/*删除or批量*/
+/*${(genCodeRecord.moduleDesc)!""}-删除or批量*/
 export async function delete${(tableInfo.clazzName)!""}(data) {
     let param = data.data
     return request('/api/${(lowerClazzName)!""}/delete', {

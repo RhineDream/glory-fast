@@ -7,7 +7,7 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import { formatWan } from '@/utils/utils';
 import GlobalSearch from '@/components/GlobalSearch/GlobalSearch'
 import moment from 'moment';
-import ${(lowerClazzName)!""}manage from '@/models/${(lowerClazzName)!""}Service';
+import ${(lowerClazzName)!""}manage from '@/models/${(lowerClazzName)!""}models';
 import styles from './${(tableInfo.clazzName)!""}List.less';
 import ${(tableInfo.clazzName)!""}Modal from './${(tableInfo.clazzName)!""}Modal'
 
@@ -249,6 +249,21 @@ class ${(tableInfo.clazzName)!""}List extends PureComponent {
             },
         </#list>
             {
+                title: '创建时间',
+                dataIndex: 'createTime',
+                width: 200,
+            },
+            {
+                title: '创建人',
+                dataIndex: 'createBy_text',
+                width: 100,
+            },
+            {
+                title: '备注',
+                dataIndex: 'remarks',
+                width: 200,
+            },
+            {
                 title: '操作',
                 width: 100,
                 fixed: 'right',
@@ -284,7 +299,7 @@ class ${(tableInfo.clazzName)!""}List extends PureComponent {
             />
         )
 
-        const edite${(tableInfo.clazzName)!""}Modal = (
+        const edit${(tableInfo.clazzName)!""}Modal = (
             <${(tableInfo.clazzName)!""}Modal
                 visible={this.state.edit${(tableInfo.clazzName)!""}Visible}
                 cancleSubmit={this.cancalEdit${(tableInfo.clazzName)!""}}
@@ -306,7 +321,7 @@ class ${(tableInfo.clazzName)!""}List extends PureComponent {
         return (
             <PageHeaderWrapper title="${(genCodeRecord.moduleDesc)!""}管理">
                 {add${(tableInfo.clazzName)!""}Modal}
-                {edite${(tableInfo.clazzName)!""}Modal}
+                {edit${(tableInfo.clazzName)!""}Modal}
                 <Card bordered={false}>
                     <div className={styles.tableList}>
                         <div className={styles.tableListForm}>
