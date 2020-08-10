@@ -148,3 +148,10 @@ glory :
   shiro:
     excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**
 
+logging:
+  level:
+    com.dao: DEBUG
+    org.springfromework.web: info
+    glory-tengyue: DEBUG
+  file: ./logs/core.log
+  root: DEBUG

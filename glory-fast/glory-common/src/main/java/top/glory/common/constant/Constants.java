@@ -59,10 +59,10 @@ public abstract class Constants {
     /**
      * 阿里云发送短信配置信息
      */
-    public static final String  ACCESS_KEY_ID = "LTAI4GAmK93HgCQHS9UwuvWK";
-    public static final String  ACCESS_KEY_SECRET = "SGzab6N4qNrQYD1K326EqaP9H4XiWa";
-    public static final String  SIGN_NAME = "腾玥短信验证平台";
-    public static final String  TEMPLATE_CODE = "SMS_197610694";
+    public static final String  ACCESS_KEY_ID = "LTAI4GAmK93HgCQHS92UwuvWK";
+    public static final String  ACCESS_KEY_SECRET = "SGzab6N4qNrQYD1K3262EqaP9H4XiWa";
+    public static final String  SIGN_NAME = "GLORY短信验证平台";
+    public static final String  TEMPLATE_CODE = "SMS_1976106942";
 
 
 }
