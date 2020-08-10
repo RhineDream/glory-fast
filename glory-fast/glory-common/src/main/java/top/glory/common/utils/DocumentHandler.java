@@ -49,6 +49,20 @@ public class DocumentHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        try {
+//            t.process(objectMap, out);
+//        } catch (TemplateException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }finally {
+//            try {
+//                out.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     public static void main(String[] args) {

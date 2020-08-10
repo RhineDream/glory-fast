@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,23 @@ import java.util.Map;
  *json数据处理工具
  */
 public class GsonUtils {
+
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    private static class SingletonHolder {
+        private SingletonHolder() {
+        }
+
+        private final static Gson INSTANCE = new GsonBuilder().serializeNulls().disableHtmlEscaping().setDateFormat(DATE_FORMAT).create();
+    }
+
+
+
+    private static Gson getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
+
+
     /**
      * 将对象转换成字符串
      * @param o
@@ -101,5 +119,18 @@ public class GsonUtils {
             t = gson.fromJson(gson.toJson(o), cls);
         }
         return t;
+    }
+
+    /**
+     * 将json字符串转化为List
+     *
+     * @param jsonString
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> jsonToList(String jsonString, Class<T> tClass) {
+        T[] ts = getInstance().fromJson(jsonString, TypeToken.getArray(tClass).getType());
+        return ts == null ? null : Arrays.asList(ts);
     }
 }

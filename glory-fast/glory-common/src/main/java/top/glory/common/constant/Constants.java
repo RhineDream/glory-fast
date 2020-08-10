@@ -5,11 +5,11 @@ import com.google.common.collect.Sets;
 import java.util.Set;
 
 /**
- * 2015/6/25
+ * 2020年8月10日
  * <p/>
  * 定义常量
  *
- * @author Jia_RG
+ * @author 春秋
  */
 public abstract class Constants {
 
@@ -55,6 +55,14 @@ public abstract class Constants {
     /**单表代码生成用到的模板*/
     public static final Set<String> GEN_CODE_ONE_TABLE_TEMP = Sets.newHashSet("entity.ftl","mapperXml.ftl","mapper.ftl","service.ftl","serviceImpl.ftl","controller.ftl",
             "reactService.ftl","reactModels.ftl","reactList.ftl","reactListStyle.ftl","reactModal.ftl");
+
+    /**
+     * 阿里云发送短信配置信息
+     */
+    public static final String  ACCESS_KEY_ID = "LTAI4GAmK93HgCQHS9UwuvWK";
+    public static final String  ACCESS_KEY_SECRET = "SGzab6N4qNrQYD1K326EqaP9H4XiWa";
+    public static final String  SIGN_NAME = "腾玥短信验证平台";
+    public static final String  TEMPLATE_CODE = "SMS_197610694";
 
 
 }
